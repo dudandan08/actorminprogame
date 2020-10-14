@@ -1,0 +1,52 @@
+
+.from {
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  padding-top: 30rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.left {
+  flex: 1;
+  text-align: center;
+}
+
+.submit {
+  display: flex;
+  margin-top: 60rpx;
+}
+
+.submit1 {
+  flex:1 ;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-right: 25rpx !important;
+  height: 85rpx !important;
+  line-height: 85rpx !important;
+  background-color: #169BD5 !important;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+input {
+  flex: 4;
+  margin-right: 25rpx;
+  padding-left: 20rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.btn{
+   /* flex: 4 !important; */
+   width: 600rpx;
+  display: flex;
+}
+

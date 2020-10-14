@@ -1,0 +1,26 @@
+<!--index.wxml-->
+
+<view class="container">
+  <button bindtap="goLogin">登录</button>
+  <swiper class="swiper-block" previous-margin="70rpx" next-margin="70rpx" current="0" autoplay="true" bindchange="swiperChange" circular="true">
+        <block wx:for="{{bannerData}}" wx:index="{{index}}" wx:key="bannerList">
+          <swiper-item class="swiper-item">
+            <navigator url="../logs/logs">
+              <image mode="aspectFill" src="{{item.src}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
+            </navigator>
+          </swiper-item>
+        </block>
+  </swiper>
+<!--
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+ --> 
+</view>

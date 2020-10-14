@@ -1,0 +1,72 @@
+/* pages/actorApply/actorApply.wxss */
+
+.from {
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.left{
+  flex: 1;
+}
+.select {
+  position: relative;
+  height: 80rpx;
+  padding-left: 20rpx;
+  flex: 3.8;
+  display: flex;
+  margin-right:25rpx;
+  line-height: 80rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+}
+
+picker {
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 10rpx;
+  transform: translateY(-50%);
+  /* margin-top: -4rpx; */
+  width: 32rpx;
+  height: 32rpx;
+}
+image{
+  vertical-align: top;
+}
+.explain {
+  display: flex;
+}
+
+textarea {
+  padding-left: 20rpx;
+  margin-right:25rpx;
+  flex: 3.8;
+  height: 200rpx;
+  border: 2rpx solid #b7b7b7;
+}
+
+.submit {
+  display: flex;
+  margin-top: 60rpx;
+}
+
+.submit1{
+  flex: 4;
+  margin-right: 25rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #169BD5;
+  text-align: center;
+  color: #fff;
+}
+.holder{
+color: #777;
+}

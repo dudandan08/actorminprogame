@@ -1,0 +1,36 @@
+<!--pages/person/person.wxml-->
+  <view class="userinfo">
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    艺人注册，艺人申请加入，艺人账户，艺人提现
+  </view>
+<view class="container">
+  <view class='title'>
+    <view class='titleSel' bindtap='titleClick' data-idx='0'>
+      <text>基本信息</text>
+      <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
+    </view>
+    <view class='titleSel' bindtap='titleClick' data-idx='1'>
+      <text>帐单</text>
+      <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
+    </view>
+  </view>
+   <!--内容布局-->
+  <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
+    <swiper-item class='swiper'>
+      <view wx:for="{{firstList}}" class='recordItem'>
+        <view class='name'>昵称：{{item}}</view>
+      </view>
+    </swiper-item>
+    <swiper-item class='swiper' class='swiper'>
+      <view wx:for="{{secondList}}" class='recordItem'>
+        <view class='name'>昵称：{{item}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+<!-- <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  --> 
+</view>

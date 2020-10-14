@@ -1,0 +1,17 @@
+<!--pages/verification/verification.wxml-->
+<view class="from">
+  <form  catchsubmit="formSubmit">
+    <view class="item">
+      <view class="left"  >姓名</view>
+      <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
+    </view>
+    <view class="item">
+      <view class="left">手机号</view>
+      <input name="tel" type="number" value="{{form.tel}}" bindinput="phone" placeholder="请输入手机号"></input>
+    </view>
+    <view class="submit">
+      <view class="left"> </view>
+        <button class="submit1"  type="primary" formType="submit">确 定</button>
+    </view>
+  </form>
+</view>

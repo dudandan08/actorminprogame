@@ -1,0 +1,48 @@
+<!--pages/platform/platform.wxml-->
+<view class="page">
+	<view class="page__bd">
+		<view class="weui-grids">
+			<navigator class="weui-grid" hover-class="weui-grid_active">
+					<image class="weui-grid__icon" src="/image/icon_tabbar.png"></image>
+					<view class="weui-grid__label">艺人注册</view>
+			</navigator>
+			<navigator url="/pages/actorApply/actorApply" class="weui-grid" hover-class="weui-grid_active">
+					<image class="weui-grid__icon" src="/image/icon_tabbar.png" ></image>
+					<view class="weui-grid__label">艺人申请</view>
+			</navigator>
+			<navigator url="../actorAmount/actoramount"  class="weui-grid" hover-class="weui-grid_active">
+				<image  class="weui-grid__icon" src="/image/mytb.png" alt></image>
+				<view class="weui-grid__label">艺人账户</view>
+			</navigator>
+			<navigator url="/pages/extract/extract" class="weui-grid"  hover-class="weui-grid_active">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png"></image>
+					<view class="weui-grid__label">艺人提现</view>
+			</navigator>
+			<navigator url="/pages/authentication/authentication" class="weui-grid">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png" hover-class="weui-grid_active"></image>
+					<view class="weui-grid__label">实名认证</view>
+			</navigator>
+			<navigator url="../actorinfo/actorinfo" class="weui-grid" hover-class="weui-grid_active">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png" ></image>
+					<view class="weui-grid__label">艺人信息</view>
+			</navigator>
+			<navigator url="../card/card" class="weui-grid" hover-class="weui-grid_active">
+					<image class="weui-grid__icon" src="/image/icon_tabbar.png" ></image>
+					<view class="weui-grid__label">绑定银行卡</view>
+			</navigator>
+			<navigator url="../bill/bill" class="weui-grid">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png" hover-class="weui-grid_active"></image>
+					<view class="weui-grid__label">帐单记录</view>
+			</navigator>
+			<navigator url="../verification/verification" class="weui-grid">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png" hover-class="weui-grid_active"></image>
+					<view class="weui-grid__label">艺人验证</view>
+			</navigator>
+      <navigator url="../edit/edit" class="weui-grid">
+					<image  class="weui-grid__icon" src="/image/icon_tabbar.png" hover-class="weui-grid_active"></image>
+					<view class="weui-grid__label">基本资料编辑</view>
+			</navigator>
+
+		</view>
+	</view>
+</view>

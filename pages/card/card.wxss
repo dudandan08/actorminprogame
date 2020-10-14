@@ -1,0 +1,75 @@
+/* pages/card/card.wxss */
+
+.from {
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.left {
+  flex: 1;
+  text-align: center;
+}
+
+.select {
+  position: relative;
+  height: 80rpx;
+  padding-left: 20rpx;
+  flex: 4;
+  display: flex;
+  margin-right: 25rpx;
+  line-height: 80rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+}
+
+picker {
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 10rpx;
+  transform: translateY(-50%);
+ 
+  width: 32rpx;
+  height: 32rpx;
+}
+image{
+  vertical-align: top;
+}
+.submit {
+  display: flex;
+  margin-top: 60rpx;
+}
+
+.submit1 {
+  flex: 4 ;
+  padding: 0 !important;
+  margin-right: 25rpx !important;
+  height: 85rpx !important;
+  line-height: 85rpx !important;
+  background-color: #169BD5 !important;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #fff;
+}
+
+input {
+  flex: 4;
+  margin-right: 25rpx;
+  padding-left: 20rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.holder{
+  color: #777 !important;
+}

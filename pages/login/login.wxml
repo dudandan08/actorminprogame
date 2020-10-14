@@ -1,0 +1,20 @@
+
+<view class="from">
+  <form catchsubmit="formSubmit">
+    <view class="item">
+      <view class="left">用户名</view>
+      <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
+    </view>
+    <view class="item">
+      <view class="left">密码</view>
+      <input name="password" password  value="{{form.password}}" bindinput="phone" placeholder="请输入密码"></input>
+    </view>
+    <view class="submit">
+      <view class="left"></view>
+      <view class="btn"> 
+       <button class="submit1"  formType="submit" >登 录</button>
+      <button class="submit1" bindtap="register"> 注 册</button>
+      </view>
+    </view>
+  </form>
+</view>

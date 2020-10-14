@@ -1,0 +1,23 @@
+/* pages/actorAmount/actorinfo.wxss */
+.item{
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.title {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 600rpx;
+  background-color: #f0f0f0;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.table {
+  display: flex;
+  align-items: center;
+  line-height: 55rpx;
+  font-size: 28rpx;
+}
+.table view{
+  margin-left: 10rpx;
+}

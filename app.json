@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/person/person",
+    "pages/platform/platform",
+    "pages/authentication/authentication",
+    "pages/actorAmount/actoramount",
+    "pages/actorApply/actorApply",
+    "pages/extract/extract",
+    "pages/actorinfo/actorinfo",
+    "pages/bill/bill",
+    "pages/edit/edit",
+    "pages/card/card",
+    "pages/verification/verification",
+    "pages/register/register"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home_hover.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/platform/platform",
+        "text": "工作台",
+        "back": true,
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "我的",
+        "iconPath": "image/mytb.png",
+        "selectedIconPath": "image/mytb_hover.png"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "日志",
+        "iconPath": "image/wechat.png",
+        "selectedIconPath": "image/wechatHL.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

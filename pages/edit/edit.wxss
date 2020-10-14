@@ -1,0 +1,125 @@
+/* pages/edit/edit.wxss */
+
+.authentication {
+  font-size: 30rpx;
+  margin: 0 15rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  justify-content: space-between;
+}
+
+.itme1 {
+  align-items: flex-start;
+  margin-top: 50rpx;
+}
+
+.left {
+  flex: 1;
+  text-align: right;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+  margin-right: 10rpx;
+}
+
+.right {
+  position: relative;
+  flex: 4.5;
+  height: 60rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+}
+
+.select {
+  position: relative;
+  height: 60rpx;
+  flex: 4.5;
+  display: flex;
+  line-height: 60rpx;
+  border: 2rpx solid #b7b7b7;
+  box-sizing: border-box;
+}
+
+picker {
+  width: 100%;
+  line-height: 56rpx;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 10rpx;
+  transform: translateY(-50%);
+  margin-top: -4rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.right1 {
+  flex: 4.5;
+  display: flex;
+}
+
+.img {
+  flex: 1.5;
+  height: 200rpx;
+}
+
+.bottom {
+  flex: 1;
+}
+
+.bottom view {
+  width: 150rpx;
+  margin: 0 auto;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  color: #fff;
+  background-color: #169bd5;
+}
+
+.submit {
+  margin: 0 auto;
+  margin-top: 100rpx;
+  color: #fff;
+  width: 590rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #169bd5;
+}
+
+.img1 {
+  color: #b7b7b7;
+  width: 100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  border: 2rpx dashed #b7b7b7;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 性别 */
+
+.gender {
+  border: none;
+}
+
+.choose {
+  display: flex;
+  margin-right: 50rpx;
+}
+
+.radio-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+}

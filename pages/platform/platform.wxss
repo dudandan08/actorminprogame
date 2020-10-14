@@ -1,0 +1,4 @@
+/* pages/platform/platform.wxss */
+.weui-grid{
+  text-align: center;
+}

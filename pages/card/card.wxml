@@ -1,0 +1,37 @@
+<!--pages/card/card.wxml-->
+<view class="from">
+  <form catchsubmit="formSubmit">
+    <view class="item">
+      <view class="left">银行卡</view>
+      <input style="display:none" value="{{form.index}}" name="bank"></input>
+      <view class="select">
+        <picker bindchange="bindPickerChange" value="{{form.index}}" range="{{array}}">
+          <view class="picker {{form.seleNull &&array[form.index] ? '':'holder'}} ">
+            {{form.seleNull ? array[form.index] :"请选择银行"}}
+          </view>
+        </picker>
+        <view class="icon">
+          <image src="/image/select.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="left">开户行</view>
+      <input bindinput="hang" value="{{form.site}}" name="site" placeholder="请输入开户行"></input>
+    </view>
+    <view class="item">
+      <view class="left">开户人</view>
+      <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入开户人姓名"></input>
+    </view>
+    <view class="item">
+      <view class="left">卡号</view>
+      <input bindinput="hao" value="{{form.number}}" name="number" placeholder="请输入银行卡卡号"></input>
+    </view>
+    <view class="submit">
+      <view class="left"> </view>
+      <button class="submit1" formType="submit">确 定</button>
+      <!-- <view class="submit1">确 定 </view> -->
+    </view>
+  </form>
+
+</view>

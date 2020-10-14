@@ -1,0 +1,51 @@
+<!--pages/authentication/authentication.wxml-->
+<view class="authentication">
+  <view class="item2">
+    <view class="left2">姓 名:</view>
+    <input class="right2"></input>
+  </view>
+  <view class="item2">
+    <view class="left2">证件类型:</view>
+    <view class="select">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </picker>
+      <view class="icon">
+        <image src="/image/select.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="item2">
+    <view class="left2">证件号:</view>
+    <input class="right2"></input>
+  </view>
+  <view class="item itme1">
+    <view class="left">证件正面照片</view>
+    <view class="right1">
+      <view class="flex img">
+      <view class="img1" wx:if="{{!imgs}}">上传图片+</view>
+        <!-- <image wx:if="{{!imgs}}" mode="aspectFill" src="/image/img.png"></image> -->
+        <image wx:else mode="aspectFill" src="{{imgs}}"></image>
+      </view>
+      <view class="flex bottom">
+        <view bindtap="choose" data-type="front">上传</view>
+      </view>
+    </view>
+  </view>
+  <view class="item itme1">
+    <view class="left">证件反面照片</view>
+    <view class="right1">
+      <view class="flex img">
+      <view class="img1" wx:if="{{!imgs1}}">上传图片+</view>
+        <!-- <image wx:if="{{!imgs1}}" mode="aspectFill" src="/image/img.png"></image> -->
+        <image wx:else mode="aspectFill" src="{{imgs1}}"></image>
+      </view>
+      <view class="flex bottom">
+        <view bindtap="choose">上传</view>
+      </view>
+    </view>
+  </view>
+  <view class="submit">确 定</view>
+</view>

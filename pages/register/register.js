@@ -1,6 +1,5 @@
 import WxValidate from "../../utils/wxValidate.js";
-import { config } from '../../utils/config';
-import { httpAgent } from '../../utils/util';
+import { config } from '../../utils/config.js';
 
 const baseUrl = config.formal.server;
 const api = '/api-wx';
@@ -126,19 +125,26 @@ Page({
           break;
       }
     } else {
-      console.log("注册接口")
+      console.log("注册接口 开始")
       let paramsData={
         userName:params.name,
         pwd:params.password1,
         confirmpassword:params.password2,
         mobile:""
       }
+      console.log(paramsData);
       let url=baseUrl + api + "/user/register";
-      httpAgent.httpAgent(url,"POST",paramsData,(resp)=>{
-        console.log(resp);
-      },
-      (resp)=>{
-        console.log(resp);
+      wx.request({
+        url: url,
+        data: paramsData,
+        method: "POST",
+        success:function(resp){
+          console.log("注册成功");
+          console.log(resp)
+        },
+        fail:function(){
+          console.log("注册：网络错误")
+        }
       })
     }
   },

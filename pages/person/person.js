@@ -1,7 +1,9 @@
 // pages/person/person.js
-
+import {
+  Http
+} from '../../utils/http'
 const app = getApp()
-
+const http = new Http();
 Page({
 
   /**
@@ -21,6 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // post get测试
+    // this.post()
+    // this.get()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -48,6 +53,17 @@ Page({
         }
       })
     }
+  },
+  post(){
+    http.sendPostRequest("/actor/apply/save",{platformId:"1",guildId:"14",applyDescr:""})
+    .then(res => {
+     
+    })
+  },
+  get(){
+    http.sendGetRequest("/actor/info")
+    .then(res => { 
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

@@ -28,11 +28,12 @@ class Http {
 
     return new Promise((resolve, reject) => {
       let userId=wx.getStorageSync('userId') || ""
+ 
       wx.request({
         url: Base.restUrl + url,
         header: { 
           'content-type': 'application/json',
-          'token': getApp().globalData.token 
+          token: wx.getStorageSync('token') || ""
         },
         method: 'POST',
         data: userId ? {
@@ -40,12 +41,9 @@ class Http {
 					...data
 				} : data,
         success(res) {
-          // wx.hideLoading({})
           resolve(res.data)
         },
         fail() {
-          // wx.hideLoading({})
-
           reject('请求的接口错误')
         },
         complete: function () {
@@ -54,7 +52,28 @@ class Http {
       })
     })
   }
-
+  sendGetRequest(url, data = {}) {
+    let userId=wx.getStorageSync('userId') || ""
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: Base.restUrl + url,
+        header: { 
+          'content-type': 'application/json',
+          token: wx.getStorageSync('token') || ""
+        },
+        data: userId ? {
+					userId,
+					...data
+				} : data,
+        success(res) {
+          resolve(res)
+        },
+        fail() {
+          reject('请求的接口错误')
+        }
+      })
+    })
+  }
 }
 export {
   Http

@@ -107,7 +107,8 @@ Page({
          app.globalData.isLogin=true;
          app.globalData.token=result.data.tokenId
          
-         wx.setStorageSync('userid', result.data.userid)
+         wx.setStorageSync('userId', result.data.userId)
+         wx.setStorageSync('token', result.data.tokenId)
          app.setLocalStorage("user",result.data);
          app.setLocalStorage("islogin",true);            
          app.setLocalStorage("token",result.data.tokenId);

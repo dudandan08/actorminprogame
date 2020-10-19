@@ -2,6 +2,8 @@ import {
   Base
 } from './base';
 
+
+
 class Http {
   constructor() {
 
@@ -28,7 +30,10 @@ class Http {
       let userId=wx.getStorageSync('userId') || ""
       wx.request({
         url: Base.restUrl + url,
-        header: { 'content-type': 'application/json' },
+        header: { 
+          'content-type': 'application/json',
+          'token': getApp().globalData.token 
+        },
         method: 'POST',
         data: userId ? {
 					userId,

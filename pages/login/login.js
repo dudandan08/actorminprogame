@@ -103,7 +103,7 @@ Page({
        let result=regs.data;
        if(result.code=200&&result.data!=null){
          //console.log(result.data);
-         
+         wx.setStorageSync('userid', res.data.userid)
          app.globalData.user=result.data
          app.globalData.isLogin=true;
          app.globalData.token=result.data.tokenId

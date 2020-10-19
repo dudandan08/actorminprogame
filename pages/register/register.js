@@ -1,4 +1,12 @@
 import WxValidate from "../../utils/wxValidate.js";
+import { config } from '../../utils/config';
+import { httpAgent } from '../../utils/util';
+
+const baseUrl = config.formal.server;
+const api = '/api-wx';
+
+const app = getApp();
+
 Page({
 
   /**
@@ -119,6 +127,19 @@ Page({
       }
     } else {
       console.log("注册接口")
+      let paramsData={
+        userName:params.name,
+        pwd:params.password1,
+        confirmpassword:params.password2,
+        mobile:""
+      }
+      let url=baseUrl + api + "/user/register";
+      httpAgent.httpAgent(url,"POST",paramsData,(resp)=>{
+        console.log(resp);
+      },
+      (resp)=>{
+        console.log(resp);
+      })
     }
   },
   /**

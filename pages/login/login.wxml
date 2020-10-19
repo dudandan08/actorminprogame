@@ -1,20 +1,19 @@
 
 <view class="from">
+  <view class="loginhead"></view>
   <form catchsubmit="formSubmit">
     <view class="item">
-      <view class="left">用户名</view>
-      <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
+      <input class="weui-input weui-icon-user" bindinput="ming" value="{{form.name}}" name="name" placeholder="用户名"></input>
     </view>
     <view class="item">
-      <view class="left">密码</view>
-      <input name="password" password  value="{{form.password}}" bindinput="phone" placeholder="请输入密码"></input>
+      <input class="weui-input" name="password" password  value="{{form.password}}" bindinput="phone" placeholder="密码"></input>
     </view>
     <view class="submit">
-      <view class="left"></view>
       <view class="btn"> 
-       <button class="submit1"  formType="submit" >登 录</button>
-      <button class="submit1" bindtap="register"> 注 册</button>
+        <button class="submit1" bindtap='goLogin' formType="submit" >登 录</button>
+        <button class="submit1" bindtap="register"> 注 册</button>
       </view>
     </view>
+    <view class="forgetpwd"><icon class="iconfont icon-bangzhu"></icon> 忘记密码</view>
   </form>
 </view>

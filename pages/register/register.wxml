@@ -3,20 +3,20 @@
 <view class="from">
   <form catchsubmit="formSubmit">
     <view class="item">
-      <view class="left">用户名：</view>
+     
       <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
     </view>
     <view class="item">
-      <view class="left">密码：</view>
+    
       <input  value="{{form.password1}}" bindinput="word1" password name="password1" placeholder="请输入密码"></input>
     </view>
     <view class="item">
-      <view class="left">确认密码：</view>
+     
       <input  value="{{form.password2}}" bindinput="word2" password name="password2" placeholder="请确认密码"></input>
 
     </view>
     <view class="item">
-      <view class="left"></view>
+     
       <view class="right">
         <input style="display:none" name="flag" value="{{form.flag}}"></input>
         <view wx:if="{{!form.flag}}" class="img" bindtap="radio">
@@ -29,7 +29,6 @@
       </view>
     </view>
     <view class="submit">
-      <view class="left"></view>
       <button class="submit1" formType="submit"> 注 册</button>
     </view>
   </form>

@@ -43,13 +43,7 @@
         "text": "我的",
         "iconPath": "image/mytb.png",
         "selectedIconPath": "image/mytb_hover.png"
-      },
-      {
-        "pagePath": "pages/login/login",
-        "text": "日志",
-        "iconPath": "image/wechat.png",
-        "selectedIconPath": "image/wechatHL.png"
-      }
+      }     
     ]
   },
   "networkTimeout": {

@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    loginstatus:false,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -30,6 +31,18 @@ Page({
     })
   },
   onLoad: function () {
+   
+    this.setData({
+      user:app.getLocalStorage("user")
+    });
+    this.setData({
+      loginstatus: app.getLocalStorage("islogin")
+    })
+    
+    console.log("localStorage: "+ JSON.stringify(app.getLocalStorage("user")) );
+    console.log("global user: "+ JSON.stringify(app.globalData.user)  );
+    console.log("global login: "+app.globalData.isLogin)
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -68,7 +81,7 @@ Page({
   },
   swiperChange(e) {
     const that = this;
-   console.log(e);
+    //console.log(e);
     that.setData({
       swiperIndex: e.detail.current,
     })

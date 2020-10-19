@@ -1,14 +1,30 @@
 
 import WxValidate from "../../utils/wxValidate.js";
+
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isLogin:true,
+    loginData:{
+      username:"",
+      pwd:""
+    },
     form: {//增加form子元素
       name: "",
       password: '',
+    }
+  },
+  canILogin(){
+    if(!wx.canIUse('button.open-type.getUserInfo')){
+      wx.showModal({
+        title: '微信版本太旧',
+        content: '使用旧版本微信无法登录，请升级您的微信版本',
+      })
     }
   },
 
@@ -18,6 +34,13 @@ Page({
   onLoad: function (options) {
     // 验证规则
     this.initValidate();
+    let loginstatus=app.getLocalStorage("islogin");
+    console.log(loginstatus);
+    if(loginstatus){
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+    }
   },
   initValidate() {
     let rules = {
@@ -54,7 +77,7 @@ Page({
   formSubmit(e) {
     // console.log(e)
     let params = e.detail.value
-    // console.log(params)
+     console.log(params)
     if (!this.WxValidate.checkForm(params)) {
       let error = this.WxValidate.errorList[0]
       // console.log(error)
@@ -74,6 +97,31 @@ Page({
       }
     }else{
       console.log("登录接口")
+      //console.log(params.name);
+      app.login({username:params.name,password:params.password},regs=>{
+       console.log("login result : "+regs);
+       let result=regs.data;
+       if(result.code=200&&result.data!=null){
+         //console.log(result.data);
+         
+         app.globalData.user=result.data
+         app.globalData.isLogin=true;
+         app.globalData.token=result.data.tokenId
+         
+         app.setLocalStorage("user",result.data);
+         app.setLocalStorage("islogin",true);
+            
+         app.setLocalStorage("token",result.data.tokenId);
+        
+        //  wx.navigateTo({
+        //    url: '/pages/index/index',
+        //  });
+         wx.switchTab({
+          url: '/pages/index/index',
+         })
+       }
+      })
+      
     }
   },
   register(){

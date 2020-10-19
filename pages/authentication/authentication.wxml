@@ -1,15 +1,14 @@
 <!--pages/authentication/authentication.wxml-->
 <view class="authentication">
+  <form catchsubmit="formSubmit">
   <view class="item2">
-    <view class="left2">姓 名:</view>
-    <input class="right2"></input>
+    <input bindinput="realName" value="{{form.realName}}" name="realName"  placeholder="姓名"></input>
   </view>
   <view class="item2">
-    <view class="left2">证件类型:</view>
     <view class="select">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <picker name="certificateType" bindchange="bindPickerChange" value="{{index}}" range="{{credentialTypes}}">
         <view class="picker">
-          {{array[index]}}
+          {{credentialTypes[index]}}
         </view>
       </picker>
       <view class="icon">
@@ -18,34 +17,28 @@
     </view>
   </view>
   <view class="item2">
-    <view class="left2">证件号:</view>
-    <input class="right2"></input>
+    <input bindinput="certificateNo" value="{{form.certificateNo}}" name="certificateNo"  placeholder="证件号"></input>
   </view>
   <view class="item itme1">
-    <view class="left">证件正面照片</view>
     <view class="right1">
       <view class="flex img">
-      <view class="img1" wx:if="{{!imgs}}">上传图片+</view>
-        <!-- <image wx:if="{{!imgs}}" mode="aspectFill" src="/image/img.png"></image> -->
-        <image wx:else mode="aspectFill" src="{{imgs}}"></image>
-      </view>
-      <view class="flex bottom">
-        <view bindtap="choose" data-type="front">上传</view>
-      </view>
+          <input class="hideinput" value="{{form.certificateImg1}}" name="certificateImg1"></input>
+          <view id="img"  data-type="front" class="img1" wx:if="{{!imgs}}" bindtap="choose">上传证件正面图片+</view>
+          <image wx:else mode="aspectFill"  data-type="front" src="{{imgs}}"  bindtap="choose"></image>
+        </view>
     </view>
   </view>
   <view class="item itme1">
-    <view class="left">证件反面照片</view>
     <view class="right1">
       <view class="flex img">
-      <view class="img1" wx:if="{{!imgs1}}">上传图片+</view>
-        <!-- <image wx:if="{{!imgs1}}" mode="aspectFill" src="/image/img.png"></image> -->
-        <image wx:else mode="aspectFill" src="{{imgs1}}"></image>
-      </view>
-      <view class="flex bottom">
-        <view bindtap="choose">上传</view>
+          <input class="hideinput" value="{{form.certificateImg2}}" name="certificateImg2"></input>
+          <view id="img1"  data-type="back" class="img1" wx:if="{{!imgs1}}" bindtap="choose">上传证件反面图片+</view>
+          <image wx:else mode="aspectFill" data-type="back" src="{{imgs1}}" bindtap="choose"></image>
       </view>
     </view>
   </view>
-  <view class="submit">确 定</view>
+  <view class="submit">
+   <button class="submit1" formType="submit"> 确 定</button>
+  </view>
+  </form>
 </view>

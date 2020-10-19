@@ -101,8 +101,9 @@ Page({
       app.login({username:params.name,password:params.password},regs=>{
        console.log("login result : "+regs);
        let result=regs.data;
+       console.log(result.data);     
        if(result.code=200&&result.data!=null){
-         //console.log(result.data);         
+            
          app.globalData.user=result.data
          app.globalData.isLogin=true;
          app.globalData.token=result.data.tokenId
@@ -113,9 +114,6 @@ Page({
          app.setLocalStorage("islogin",true);            
          app.setLocalStorage("token",result.data.tokenId);
         
-        //  wx.navigateTo({
-        //    url: '/pages/index/index',
-        //  });
          wx.switchTab({
           url: '/pages/index/index',
          })

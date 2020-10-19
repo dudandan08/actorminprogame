@@ -102,15 +102,14 @@ Page({
        console.log("login result : "+regs);
        let result=regs.data;
        if(result.code=200&&result.data!=null){
-         //console.log(result.data);
-         wx.setStorageSync('userid', res.data.userid)
+         //console.log(result.data);         
          app.globalData.user=result.data
          app.globalData.isLogin=true;
          app.globalData.token=result.data.tokenId
          
+         wx.setStorageSync('userid', result.data.userid)
          app.setLocalStorage("user",result.data);
-         app.setLocalStorage("islogin",true);
-            
+         app.setLocalStorage("islogin",true);            
          app.setLocalStorage("token",result.data.tokenId);
         
         //  wx.navigateTo({

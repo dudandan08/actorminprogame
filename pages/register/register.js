@@ -129,7 +129,7 @@ Page({
       let paramsData={
         userName:params.name,
         pwd:params.password1,
-        confirmpassword:params.password2,
+        confirmPassword:params.password2,
         mobile:""
       }
       console.log(paramsData);
@@ -139,8 +139,23 @@ Page({
         data: paramsData,
         method: "POST",
         success:function(resp){
-          console.log("注册成功");
-          console.log(resp)
+          console.log("注册成功 返回结果："+ JSON.stringify(resp) );
+          let result=resp.data;
+          if(result.code==200){
+            if(result.data){
+              wx.showToast({
+                title: '注册成功，请重新登录',
+                icon: 'success',
+                duration: 2000
+              });
+              wx.navigateTo({
+                url: '/pages/login/login'
+              });
+              // wx.switchTab({
+              //   url: '/pages/login/login'
+              // });
+            }
+          }
         },
         fail:function(){
           console.log("注册：网络错误")

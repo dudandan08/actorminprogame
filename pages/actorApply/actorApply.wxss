@@ -70,3 +70,9 @@ textarea {
 .holder{
 color: #777;
 }
+.test{
+  width: 100%;
+  height: 80rpx;
+ color: #777;
+
+}

@@ -1,44 +1,45 @@
 <!--pages/actorApply/actorApply.wxml-->
 <!-- <mp-icon icon="add" color="black" size="{{25}}"></mp-icon> -->
 <view class="from">
-<form catchsubmit="formSubmit">
- <view class="item">
-    <view class="left">所属平台：</view>
-    <view class="select">
-    <input style="display:none" value="{{ !form.seleNull ? '' : form.index }}" name="platform"></input>
-      <picker bindchange="bindPickerChange" value="{{form.index}}" range="{{array}}">
-        <view class="picker {{form.seleNull &&array[form.index] ? '':'holder'}} ">
-          {{form.seleNull ? array[form.index] :"请选择所属平台"}}
+  <form catchsubmit="formSubmit">
+    <view class="item">
+      <view class="left">所属平台：</view>
+      <view class="select">
+        <input style="display:none" value="{{ !form.seleNull ? '' : form.index }}" name="platform"></input>
+        <picker bindchange="bindPickerChange" value="{{form.index}}" range-key="platform" range="{{gangedData}}">
+          <view class="picker {{form.seleNull &&gangedData[form.index].platform ? '':'holder'}} ">
+            {{form.seleNull ? gangedData[form.index].platform :"请选择所属平台"}}
+          </view>
+        </picker>
+        <view class="icon">
+          <image src="/image/select.png"></image>
         </view>
-      </picker>
-      <view class="icon">
-        <image src="/image/select.png"></image>
       </view>
     </view>
-  </view>
-  <view class="item">
-    <view class="left">所属公会：</view>
-    <view class="select">
-     <input style="display:none" value="{{ !form.seleNull1 ? '' : form.index1 }}" name="union"></input>
-      <picker bindchange="bindPickerChange1" value="{{form.index.index1}}" range="{{array1}}">
-        <view class="picker {{form.seleNull1 && array1[form.index1] ? '':'holder'}}">
-          {{form.seleNull1 ? array1[form.index1] :"请选择所属公会"}}
+    <view class="item">
+      <view class="left">所属公会：</view>
+      <view class="select">
+        <input style="display:none" value="{{ !form.seleNull1 ? '' : form.index1 }}" name="union"></input>
+        <view class="test" wx:if="{{!form.seleNull}}" bindtap="laborUnion">请选择所属公会</view>
+        <picker wx:else bindchange="bindPickerChange1" range-key="name" value="{{form.index.index1}}" range="{{meetDta}}">
+          <view class="picker {{form.seleNull && meetDta[form.index1] ? '':'holder'}}">
+            {{meetDta[form.index1].name}}
+          </view>
+        </picker>
+        <view class="icon">
+          <image src="/image/select.png"></image>
         </view>
-      </picker>
-      <view class="icon">
-        <image src="/image/select.png"></image>
       </view>
     </view>
-  </view>
-  <view class="explain">
-    <view class="left">申请说明：</view>
-    <textarea  bindinput="shuo" value="{{form.explain}}" name="explain"></textarea>
-  </view>
-  <view class="submit">
-    <view class="left"> </view>
-    <button class="submit1" formType="submit">确 定</button>
-    <!-- <view class="submit1">申 请 </view> -->
-  </view>
-</form>
- 
+    <view class="explain">
+      <view class="left">申请说明：</view>
+      <textarea bindinput="shuo" value="{{form.explain}}" name="explain"></textarea>
+    </view>
+    <view class="submit">
+      <view class="left"> </view>
+      <button class="submit1" formType="submit">确 定</button>
+      <!-- <view class="submit1">申 请 </view> -->
+    </view>
+  </form>
+
 </view>

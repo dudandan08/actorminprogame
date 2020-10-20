@@ -1,71 +1,24 @@
-<!-- <view>
-  <view class="page__bd">
-    <mp-cells ext-class="my-cells" title="NOW工会">
-        <mp-cell>
-            <view>所属工会</view>
-            <view slot="footer">NOW工会</view>
-        </mp-cell>
-        <mp-cell>
-            <view>直播ID</view>
-            <view slot="footer">57646</view>
-        </mp-cell>
-         <mp-cell>
-            <view>姓名</view>
-            <view slot="footer">李四</view>
-        </mp-cell>
-         <mp-cell>
-            <view>昵称</view>
-            <view slot="footer">长江七号</view>
-        </mp-cell>
-         <mp-cell>
-            <view>认证状态</view>
-            <view slot="footer">已认证</view>
-        </mp-cell>
-    </mp-cells>
-    <mp-cells ext-class="my-cells" title="腾讯工会">
-        <mp-cell>
-            <view>所属工会</view>
-            <view slot="footer">腾讯工会</view>
-        </mp-cell>
-        <mp-cell>
-            <view>直播ID</view>
-            <view slot="footer">57646</view>
-        </mp-cell>
-         <mp-cell>
-            <view>姓名</view>
-            <view slot="footer">李四</view>
-        </mp-cell>
-         <mp-cell>
-            <view>昵称</view>
-            <view slot="footer">长江七号</view>
-        </mp-cell>
-         <mp-cell>
-            <view>认证状态</view>
-            <view slot="footer">已认证</view>
-        </mp-cell>
-    </mp-cells>
-  </view>
-</view> -->
-<view class="item" wx:for="{{2}}" wx:key="index">
-  <view class="title">NOW平台</view>
+
+<view class="item" wx:for="{{actorsData}}" wx:key="index" wx:for-item="item">
+  <view class="title">{{item.platformName}}</view>
   <view class="table">
     <view>所属公会：</view>
-    <view>NOW工会</view>
+    <view>{{item.guildName}}</view>
   </view>
   <view class="table">
     <view>直播ID：</view>
-    <view>123455</view>
+    <view>{{item.livePlatformUserId}}</view>
   </view>
   <view class="table">
     <view>姓名：</view>
-    <view>李四</view>
+    <view>{{item.fullName}}</view>
   </view>
   <view class="table">
     <view>昵称：</view>
-    <view>长江七号</view>
+    <view>{{item.nickName}}</view>
   </view>
   <view class="table">
     <view>认证状态：</view>
-    <view>已认证</view>
+    <view>{{item.isActorCertification}}</view>
   </view>
 </view>

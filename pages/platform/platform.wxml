@@ -2,10 +2,10 @@
 <view class="page">
 	<view class="page__bd">
 		<view class="weui-grids">
-			<navigator class="weui-grid" hover-class="weui-grid_active">
+			<!-- <navigator class="weui-grid" hover-class="weui-grid_active">
 					<image class="weui-grid__icon" src="/image/icon_tabbar.png"></image>
 					<view class="weui-grid__label">艺人注册</view>
-			</navigator>
+			</navigator> -->
 			<navigator url="/pages/actorApply/actorApply" class="weui-grid" hover-class="weui-grid_active">
 					<image class="weui-grid__icon" src="/image/icon_tabbar.png" ></image>
 					<view class="weui-grid__label">艺人申请</view>

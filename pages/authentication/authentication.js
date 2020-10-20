@@ -191,7 +191,7 @@ Page({
       }
       let paramsData={
         "userId":userid,
-        "realName":params.realName,
+        "realFullName":params.realName,
         "certificateType":params.certificateType,
         "certificateNo":params.certificateNo,
         "certificateImg1":params.certificateImg1,

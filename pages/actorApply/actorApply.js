@@ -91,12 +91,12 @@ Page({
             icon: "none"
           })
           break;
-        case "union":
-          wx.showToast({
-            title: error.msg,
-            icon: "none"
-          })
-          break;
+        // case "union":
+        //   wx.showToast({
+        //     title: error.msg,
+        //     icon: "none"
+        //   })
+        //   break;
         case "explain":
           wx.showToast({
             title: error.msg,
@@ -105,7 +105,6 @@ Page({
           break
       }
     } else {
-
       http.sendPostRequest("/actor/apply/save", { platformId: this.data.platformId, guildId: this.data.guildId, applyDescr: this.data.applyDescr })
         .then(res => {
           console.log(res)

@@ -1,64 +1,71 @@
 <!--pages/edit/edit.wxml-->
 <view class="authentication">
-  <view class="item itme1">
-    <view class="left">头像</view>
-    <view class="right1">
-      <view class="flex img">
-        <view class="img1" wx:if="{{!imgs}}">上传图片</view>
-        <!-- <image wx:if="{{!imgs}}" mode="aspectFill" src="/image/img.png"></image> -->
-        <image wx:else mode="aspectFill" src="{{imgs}}"></image>
-      </view>
-      <view class="flex bottom">
-        <view bindtap="choose">上传</view>
+  <form catchsubmit="formSubmit">
+    <view class="item itme1">
+      <view class="left">头像</view>
+      <view class="right1">
+        <view class="flex img">
+          <input style="display:none" value="{{form.userPhoto}}" name="userPhoto"></input>
+          <view class="img1" wx:if="{{!form.userPhoto}}">上传图片</view>
+          <!-- <image wx:if="{{!imgs}}" mode="aspectFill" src="/image/img.png"></image> -->
+          <image wx:else mode="aspectFill" src="{{form.userPhoto}}"></image>
+        </view>
+        <view class="flex bottom">
+          <view bindtap="choose">上传</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="item">
-    <view class="left">昵称</view>
-    <input class="right"></input>
-  </view>
-  <view class="item">
-    <view class="left">性别</view>
-    <view class="right gender">
-      <radio-group bindchange="radioChange" class="radio-box">
-        <label class="choose"  wx:for="{{items}}" wx:key="{{item.value}}">
-          <view>
-            <radio color="#169bd5" value="{{item.value}}" checked="true" />
-          </view>
-          <view>{{item.name}}</view>
-        </label>
-      </radio-group>
+    <view class="item">
+      <view class="left">昵称</view>
+      <input class="right" value="{{form.nickName}}" name="nickName"></input>
     </view>
-  </view>
-  <view class="item">
-    <view class="left">年龄</view>
-    <input class="right">
+    <view class="item">
+      <view class="left">性别</view>
+      <view class="right gender">
+        <input style="display:none" value="{{form.gender}}" name="gender"></input>
+        <radio-group bindchange="radioChange" class="radio-box">
+          <label class="choose" wx:for="{{items}}" wx:key="{{item.value}}">
+            <view>
+              <radio color="#169bd5" value="{{item.value}}" checked="true" />
+            </view>
+            <view>{{item.name}}</view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="item">
+      <view class="left">年龄</view>
+      <input class="right" value="{{form.age}}" name="age">
 
-    </input>
-  </view>
+      </input>
+    </view>
+    <view class="item">
+      <view class="left">出生日期</view>
+      <input style="display:none" value="{{form.birthDate}}" name="birthDate"></input>
+      <picker data-field="date" class="right" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
+        bindchange="bindDateChange">
+        <view>{{date}}</view>
+      </picker>
+    </view>
+    <view class="item">
+      <view class="left">邮箱</view>
+      <input class="right" value="{{form.email}}" name="email"></input>
+    </view>
+    <view class="item">
+      <view class="left">QQ</view>
+      <input class="right" value="{{form.qq}}" name="qq"></input>
+    </view>
+    <view class="item">
+      <view class="left">支付宝</view>
+      <input class="right" value="{{form.alipayAccount}}" name="alipayAccount"></input>
+    </view>
+    <view class="item">
+      <view class="left">常住地址</view>
+      <input class="right" value="{{form.currentAddress}}" name="currentAddress"></input>
+    </view>
+    <view class="submit">
+      <button class="submit" formType="submit">确 定</button>
+    </view>
+  </form>
 
-
-  <view class="item">
-    <view class="left">出生日期</view>
-    <picker data-field="date" class="right" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-      <view>{{date}}</view>
-    </picker>
-  </view>
-  <view class="item">
-    <view class="left">邮箱</view>
-    <input class="right"></input>
-  </view>
-  <view class="item">
-    <view class="left">QQ</view>
-    <input class="right"></input>
-  </view>
-  <view class="item">
-    <view class="left">支付宝</view>
-    <input class="right"></input>
-  </view>
-  <view class="item">
-    <view class="left">常住地址</view>
-    <input class="right"></input>
-  </view>
-  <view class="submit">确 定</view>
 </view>

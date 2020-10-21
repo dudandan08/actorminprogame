@@ -1,5 +1,13 @@
 // pages/card/card.js
 import WxValidate from "../../utils/wxValidate.js";
+
+import {Http} from"../../utils/http";
+
+var util=require('../../utils/util');
+
+const http = new Http();
+const app = getApp()
+
 Page({
 
   /**
@@ -14,6 +22,39 @@ Page({
       site: "",
       number: "",
     }
+  },
+
+  loadData(){
+    wx.showLoading({
+      title: '加载中...',
+    })
+      let url= "/bankinfo/1";//+app.globalData.user.userId;
+      console.log(url);
+      http.sendGetRequest(url,null).then(resp=>{
+        console.log("艺人帐户 返回结果："+ JSON.stringify(resp) );
+        let result=resp.data;
+        if(result.code==200){
+          if(result.data!=null){
+            this.setData({
+              "form.index": result.data.bankType
+            })
+            this.setData({
+              "form.seleNull": result.data.bankType
+            })
+            this.setData({
+              "form.site": result.data.bankName
+            })  
+            this.setData({
+              "form.name": result.data.accountUserName
+            });
+            this.setData({
+              "form.number": result.data.cardNo
+            });            
+           
+          }
+        }
+        wx.hideLoading();
+      })
   },
 
   /**
@@ -90,6 +131,38 @@ Page({
       }
     } else {
       console.log("绑定银行卡")
+      let userid;
+      if(app.globalData.user==null){
+        userid=app.getLocalStorage("userId");
+      }else{
+        userid=app.globalData.user.userId;
+      }
+      let paramsData={
+        "userId":userid,
+        "bankType":params.index,
+        "bankName":params.site,
+        "bankAmount":params.name,
+        "cardNo":params.number
+      }
+      console.log("实名认证上传的参对象："+JSON.stringify(paramsData) );
+      //let url=baseUrl + api + "/userreal/save";
+      let url= "/userreal/save";
+      http.sendPostRequest(url,paramsData).then(resp=>{
+        console.log("实名认证 返回结果："+ JSON.stringify(resp) );
+        let result=resp.data;
+        if(result.code==200){
+          if(result.data){
+            wx.showToast({
+              title: '实名认证已提交请等待系统审核',
+              icon: 'success',
+              duration: 2000
+            });
+            wx.navigateTo({
+              url: '/pages/platform/platform'
+            });
+          }
+        }
+      })
     }
   },
   // 选择银行
@@ -128,7 +201,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.loadData();
   },
 
   /**

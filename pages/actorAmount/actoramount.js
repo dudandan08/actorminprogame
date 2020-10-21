@@ -1,16 +1,49 @@
 // pages/actorAmount/actoramount.js
+
+import {Http} from"../../utils/http";
+
+var util=require('../../utils/util');
+
+const http = new Http();
 const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    totalMoney:5000,//总金额
-    withdrawMoney:4300,//取款
-    depositMoney:700 //存款
+    totalMoney:0,//总金额
+    withdrawMoney:0,//取款
+    depositMoney:0 //存款
   },
 
+  loadData(){
+    wx.showLoading({
+      title: '加载中...',
+    })
+      let url= "/useraccount/"+app.globalData.user.userId;
+      console.log(url);
+      http.sendGetRequest(url,null).then(resp=>{
+        console.log("艺人帐户 返回结果："+ JSON.stringify(resp) );
+        let result=resp.data;
+        if(result.code==200){
+          if(result.data!=null){
+            this.setData({
+              totalMoney:result.data.totalamount
+            });
+            this.setData({
+              withdrawMoney:result.data.alreadyamount
+            });
+            this.setData({
+              depositMoney:result.data.remainingamount
+            });            
+           
+          }
+        }
+        wx.hideLoading();
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -35,9 +68,9 @@ Page({
       //   url: '../login/login',
       // });
     }
-    this.setData({
-      totalMoney:7000
-    })
+    // this.setData({
+    //   totalMoney:7000
+    // })
     
 
   },
@@ -53,7 +86,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.loadData();
   },
 
   /**

@@ -1,7 +1,7 @@
 <!--pages/actorApply/actorApply.wxml-->
 <!-- <mp-icon icon="add" color="black" size="{{25}}"></mp-icon> -->
 <view class="from">
-  <form catchsubmit="formSubmit">
+  <form bindsubmit="formSubmit">
     <view class="item">
       <view class="left">所属平台：</view>
       <view class="select">

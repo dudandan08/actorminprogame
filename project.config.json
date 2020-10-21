@@ -1,186 +1,193 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": false,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": false,
-		"useApiHook": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": []
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx5bf5ef0a5ba3ff3c",
-	"projectname": "miniprogram-1",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/logs/logs",
-					"pathName": "pages/logs/logs",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/person/person",
-					"pathName": "pages/person/person",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/platform/platform",
-					"pathName": "pages/platform/platform",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/actorAmount/actoramount",
-					"pathName": "pages/actorAmount/actoramount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/actorinfo/actorinfo",
-					"pathName": "pages/actorinfo/actorinfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/actorApply/actorApply",
-					"pathName": "pages/actorApply/actorApply",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/actorAmount/actoramount",
-					"pathName": "pages/actorAmount/actoramount",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/extract/extract",
-					"pathName": "pages/extract/extract",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/card/card",
-					"pathName": "pages/card/card",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/authentication/authentication",
-					"pathName": "pages/authentication/authentication",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/edit/edit",
-					"pathName": "pages/edit/edit",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/verification/verification",
-					"pathName": "pages/verification/verification",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/register/register",
-					"pathName": "pages/register/register",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/actorApply/actorApply",
-					"pathName": "pages/actorApply/actorApply",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.0.4",
+  "appid": "wx5bf5ef0a5ba3ff3c",
+  "projectname": "miniprogram-1",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/logs/logs",
+          "pathName": "pages/logs/logs",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/person/person",
+          "pathName": "pages/person/person",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/platform/platform",
+          "pathName": "pages/platform/platform",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/actorAmount/actoramount",
+          "pathName": "pages/actorAmount/actoramount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/actorinfo/actorinfo",
+          "pathName": "pages/actorinfo/actorinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/actorApply/actorApply",
+          "pathName": "pages/actorApply/actorApply",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/actorAmount/actoramount",
+          "pathName": "pages/actorAmount/actoramount",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/extract/extract",
+          "pathName": "pages/extract/extract",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/card/card",
+          "pathName": "pages/card/card",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/authentication/authentication",
+          "pathName": "pages/authentication/authentication",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/edit/edit",
+          "pathName": "pages/edit/edit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/verification/verification",
+          "pathName": "pages/verification/verification",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/register/register",
+          "pathName": "pages/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/actorApply/actorApply",
+          "pathName": "pages/actorApply/actorApply",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/edit/edit",
+          "pathName": "pages/edit/edit",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

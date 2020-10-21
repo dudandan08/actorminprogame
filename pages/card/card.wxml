@@ -3,6 +3,7 @@
   <form catchsubmit="formSubmit">
     <view class="item">
       <view class="left">银行卡</view>
+      <input style="display:none" value="{{form.id}}" name="id"></input>
       <input style="display:none" value="{{form.index}}" name="bank"></input>
       <view class="select">
         <picker bindchange="bindPickerChange" value="{{form.index}}" range="{{array}}">

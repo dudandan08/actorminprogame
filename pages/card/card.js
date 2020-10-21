@@ -16,6 +16,7 @@ Page({
   data: {
     array: ['工商银行', '建设银行', '交通银行', '农业银行'],
     form: {
+      id:0,
       seleNull:null,
       index: 0,
       name: "",
@@ -35,6 +36,9 @@ Page({
         let result=resp.data;
         if(result.code==200){
           if(result.data!=null){
+            this.setData({
+              "form.id": result.data.id
+            })
             this.setData({
               "form.index": result.data.bankType
             })
@@ -138,6 +142,7 @@ Page({
         userid=app.globalData.user.userId;
       }
       let paramsData={
+        "id":params.id,
         "userId":userid,
         "bankType":params.index,
         "bankName":params.site,
@@ -146,21 +151,19 @@ Page({
       }
       console.log("实名认证上传的参对象："+JSON.stringify(paramsData) );
       //let url=baseUrl + api + "/userreal/save";
-      let url= "/userreal/save";
+      let url= "/bankinfo/update";
       http.sendPostRequest(url,paramsData).then(resp=>{
-        console.log("实名认证 返回结果："+ JSON.stringify(resp) );
-        let result=resp.data;
+        console.log("绑定银行卡 返回结果："+ JSON.stringify(resp) );
+        let result=resp;
         if(result.code==200){
-          if(result.data){
-            wx.showToast({
-              title: '实名认证已提交请等待系统审核',
-              icon: 'success',
-              duration: 2000
-            });
-            wx.navigateTo({
-              url: '/pages/platform/platform'
-            });
-          }
+          wx.showToast({
+            title: result.message,
+            icon: 'success',
+            duration: 2000
+          });
+          wx.switchTab({
+            url: '/pages/platform/platform'
+          });
         }
       })
     }

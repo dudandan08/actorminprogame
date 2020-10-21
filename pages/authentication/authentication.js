@@ -195,26 +195,24 @@ Page({
         "certificateType":params.certificateType,
         "certificateNo":params.certificateNo,
         "certificateImg1":params.certificateImg1,
-        "certificateImg2":params.certificateImg2,
-        "certificateTime":util.formatTime(new Date())
+        "certificateImg2":params.certificateImg2
       }
       console.log("实名认证上传的参对象："+JSON.stringify(paramsData) );
+     // "certificateTime":util.formatTime(new Date())
       //let url=baseUrl + api + "/userreal/save";
       let url= "/userreal/save";
       http.sendPostRequest(url,paramsData).then(resp=>{
         console.log("实名认证 返回结果："+ JSON.stringify(resp) );
-        let result=resp.data;
+        let result=resp;
         if(result.code==200){
-          if(result.data){
-            wx.showToast({
-              title: '实名认证已提交请等待系统审核',
-              icon: 'success',
-              duration: 2000
-            });
-            wx.navigateTo({
-              url: '/pages/platform/platform'
-            });
-          }
+          wx.showToast({
+            title: result.message,
+            icon: 'success',
+            duration: 2000
+          });
+          wx.switchTab({
+            url: '/pages/platform/platform'
+          });
         }
       })
       // wx.request({

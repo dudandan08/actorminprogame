@@ -10,18 +10,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: "2016-09-01",
+    date: "请选择出生日期",
     time: "12:01",
     imgsUrl: "http://62.234.27.2:8080",
     items: [
-      { value: 'man', name: '男', checked: 'true' },
-      { value: 'girl', name: '女' },
+      { value: 'man', name: '男', checked: 'false' },
+      { value: 'girl', name: '女', checked: 'false' },
     ],
     userinfo: "",
     form: {
       userPhoto: "",
       nickName: "",
-      ender: "",
+      gender: "",
       age: '',
       birthDate: "",
       email: "",
@@ -43,10 +43,16 @@ Page({
       }
     })
   },
+  radioChange(e) {
+    console.log(e)
+    this.setData({
+      'form.gender': e.detail.value
+    })
+  },
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value,
-      [`formData.date`]: e.detail.value
+      'form.birthDate': e.detail.value
     })
   },
   /**
@@ -126,17 +132,17 @@ Page({
       .then(res => {
         console.log(res)
         console.log(res.data.data)
-        if(res.data.code==200){
+        if (res.data.code == 200) {
           this.setData({
-            form:res.data.data
+            form: res.data.data
           })
         }
       })
   },
   // 提交表单
   formSubmit(e) {
-    console.log("7878")
     console.log(e)
+    console.log(e.detail.value)
     let params = e.detail.value
     if (!this.WxValidate.checkForm(params)) {
       let error = this.WxValidate.errorList[0]
@@ -196,6 +202,29 @@ Page({
           })
           break;
       }
+    } else {
+      console.log("111")
+      http.sendPostRequest("/user/update", { userPhoto: params.userPhoto, nickName: params.nickName, gender: params.gender, age: params.age, birthDate: params.birthDate, email: params.email, qq: params.qq, alipayAccount: params.alipayAccount, currentAddress: params.currentAddress })
+        .then(res => {
+          console.log(res)
+          console.log(res.data)
+          if (res.code == 200) {
+            wx.showToast({
+              title: '修改成功',
+              icon: 'none',
+            })
+            setTimeout(function () {
+              wx.switchTab({
+                url: '/pages/platform/platform'
+              })
+            }, 1000);
+          } else {
+            wx.showToast({
+              title: res.message,
+              icon: 'none',
+            })
+          }
+        })
     }
   },
   /**

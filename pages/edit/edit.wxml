@@ -26,7 +26,7 @@
         <radio-group bindchange="radioChange" class="radio-box">
           <label class="choose" wx:for="{{items}}" wx:key="{{item.value}}">
             <view>
-              <radio color="#169bd5" value="{{item.value}}" checked="true" />
+              <radio color="#169bd5" value="{{item.value}}" checked="{{item.checked==true}}" />
             </view>
             <view>{{item.name}}</view>
           </label>
@@ -42,8 +42,7 @@
     <view class="item">
       <view class="left">出生日期</view>
       <input style="display:none" value="{{form.birthDate}}" name="birthDate"></input>
-      <picker data-field="date" class="right" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
-        bindchange="bindDateChange">
+      <picker data-field="date" class="right" mode="date" value="{{date}}" bindchange="bindDateChange">
         <view>{{date}}</view>
       </picker>
     </view>

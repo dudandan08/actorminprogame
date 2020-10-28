@@ -1,5 +1,7 @@
 // pages/verification/verification.js
 import WxValidate from "../../utils/wxValidate.js";
+import { Http } from "../../utils/http";
+const http = new Http();
 Page({
 
   /**
@@ -76,6 +78,16 @@ Page({
           })
           break
       }
+    }else{
+      http.sendPostRequest('/actor/macth' ,{fullName:e.detail.value.name,mobile:e.detail.value.tel}).then(res => {
+        console.log(res)
+        console.log(res.code)
+        // if (res.code == 200) {
+        //   this.setData({
+        //     total: res.data
+        //   })
+        // }
+      })
     }
     return false
   },

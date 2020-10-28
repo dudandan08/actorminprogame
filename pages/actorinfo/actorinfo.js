@@ -24,7 +24,8 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
-      let url= "/actor/info/"+app.globalData.user.userId;
+    let userId = wx.getStorageSync('userId') || ""
+      let url= "/actor/info/"+userId;
       console.log(url);
       http.sendGetRequest(url,null).then(resp=>{
         console.log("艺人信息 返回结果："+ JSON.stringify(resp) );

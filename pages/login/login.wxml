@@ -1,5 +1,4 @@
-
-<view class="from">
+<!-- <view class="from">
   <view class="loginhead"></view>
   <form catchsubmit="formSubmit">
     <view class="item">
@@ -16,4 +15,23 @@
     </view>
     <view class="forgetpwd"><icon class="iconfont icon-bangzhu"></icon> 忘记密码</view>
   </form>
+</view> -->
+<view class="content">
+  <view style="height: 60rpx;"></view>
+  <view class="image">
+    <image src="../../image/logo.png"></image>
+  </view>
+  <view style="height: 100rpx;"></view>
+  <form catchsubmit="formSubmit">
+    <view class="form">
+      <input placeholder="请输入用户名" value="{{form.name}}" bindinput="ming" name="name" />
+      <input placeholder="请输入用户密码" password value="{{form.password}}" bindinput="phone" name="password" />
+    </view>
+    <button formType="submit" hover-class="none" bindtap='goLogin'>登 录</button>
+  </form>
+  <view class="click flex">
+    <div>忘记密码</div>
+    <div class="mid">|</div>
+    <div bindtap="register">注册账户</div>
+  </view>
 </view>

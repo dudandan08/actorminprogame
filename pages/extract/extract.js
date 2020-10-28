@@ -1,5 +1,7 @@
 // pages/extract/extract.js
 import WxValidate from "../../utils/wxValidate.js";
+import { Http } from "../../utils/http";
+const http = new Http();
 Page({
 
   /**
@@ -7,8 +9,9 @@ Page({
    */
   data: {
     form: {//增加form子元素
-      number:"",
-    }
+      number: "",
+    },
+    total: 0,
   },
 
   /**
@@ -17,6 +20,20 @@ Page({
   onLoad: function (options) {
     // 验证规则
     this.initValidate();
+    // 获取可提现的金额
+    this.getdata()
+  },
+  getdata() {
+    let userId = wx.getStorageSync('userId') || ""
+    http.sendGetRequest('/useraccount/remainingamount/' + userId).then(res => {
+      console.log(res)
+      console.log(res.code)
+      if (res.code == 200) {
+        this.setData({
+          total: res.data
+        })
+      }
+    })
   },
   initValidate() {
     let rules = {
@@ -24,18 +41,18 @@ Page({
         required: true,
         min: 0.01,
       },
-     
+
     }
     let message = {
       number: {
         required: '请输入金额',
         min: '请输入正确的金额'
       },
-     
+
     }
     this.WxValidate = new WxValidate(rules, message);
   },
-  money(e){
+  money(e) {
     this.setData({
       "form.number": e.detail.value
     })

@@ -1,5 +1,5 @@
 /* pages/actorAmount/actoramount.wxss */
-.placeholder{
+/* .placeholder{
   margin: 3px;
   padding: 0 10px;
   text-align: center;
@@ -24,4 +24,55 @@
   
   font-weight: bold;
   color: #ff0000;
+} */
+page {
+  background: #f5f5f5;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.overall{
+  position: relative;
+}
+.image{
+  width: 750rpx;
+  height: 457rpx;
+}
+.box{
+  position: absolute;
+  top:30rpx;
+  left:30rpx;
+  width: 690rpx;
+  height: 609rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  background-color: #fff;
+}
+.title{
+  color: #666666;
+}
+.all{
+  margin-top: 20rpx;
+  color: #DF5E29;
+  font-size: 72rpx;
+  font-weight: bold;
+}
+.list{
+  margin-top: 100rpx;
+  color: #666;
+  justify-content: center;
+}
+.item{
+  width: 50%;
+}
+.future{
+  margin-top: 20rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #DF5E29;
+}
+.before{
+  margin-top: 20rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
 }

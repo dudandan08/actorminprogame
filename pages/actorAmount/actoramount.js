@@ -1,8 +1,8 @@
 // pages/actorAmount/actoramount.js
 
-import {Http} from"../../utils/http";
+import { Http } from "../../utils/http";
 
-var util=require('../../utils/util');
+var util = require('../../utils/util');
 
 const http = new Http();
 const app = getApp()
@@ -13,43 +13,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    totalMoney:0,//总金额
-    withdrawMoney:0,//取款
-    depositMoney:0 //存款
+    totalMoney: 0,//总金额
+    withdrawMoney: 0,//取款
+    depositMoney: 0 //存款
   },
 
-  loadData(){
+  loadData() {
+    let that=this
     wx.showLoading({
       title: '加载中...',
     })
-      let url= "/useraccount/"+app.globalData.user.userId;
-      console.log(url);
-      http.sendGetRequest(url,null).then(resp=>{
-        console.log("艺人帐户 返回结果："+ JSON.stringify(resp) );
-        let result=resp.data;
-        if(result.code==200){
-          if(result.data!=null){
-            this.setData({
-              totalMoney:result.data.totalamount
-            });
-            this.setData({
-              withdrawMoney:result.data.alreadyamount
-            });
-            this.setData({
-              depositMoney:result.data.remainingamount
-            });            
-           
-          }
-        }
-        wx.hideLoading();
-      })
+    let userId = wx.getStorageSync('userId') || ""
+    let url = "/useraccount/" + userId;
+    console.log(url);
+    http.sendGetRequest(url, null).then(resp => {
+      console.log("艺人帐户 返回结果：" + JSON.stringify(resp));
+      let result = resp.data;
+      if (resp.code == 200) {
+        that.setData({
+          totalMoney:  result.alreadyAmount
+        });
+        this.setData({
+          withdrawMoney: result.alreadyAmount
+        });
+        this.setData({
+          depositMoney: result.remainingAmount
+        });
+      }
+      wx.hideLoading();
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     console.log(app.globalData.access);
-    if(!app.globalData.access){
+    if (!app.globalData.access) {
       console.log("没有登录");
       // wx.showModal({
       //   title: '提示',
@@ -71,8 +70,8 @@ Page({
     // this.setData({
     //   totalMoney:7000
     // })
-    
 
+    this.loadData();
   },
 
   /**
@@ -86,7 +85,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.loadData();
+    
   },
 
   /**

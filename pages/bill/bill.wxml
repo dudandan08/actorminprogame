@@ -1,5 +1,5 @@
 <!--pages/bill/bill.wxml-->
-<view class="box">
+<!-- <view class="box">
   <view class="top item table">
     <view>日期</view>
     <view>金额</view>
@@ -14,4 +14,60 @@
       <view>-600</view>
     </view>
   </view>
+</view> -->
+<view>
+  <view style="height: 20rpx;"></view>
+  <view class="list">
+    <view class="item">
+      <view class="income flex">
+        <view class="left">收入</view>
+        <view class="right">+700</view>
+      </view>
+      <view class="income flex">
+        <view>2020-10-23</view>
+        <view>17700</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="income flex">
+        <view class="left">收入</view>
+        <view class="right">+700</view>
+      </view>
+      <view class="income flex">
+        <view>2020-10-23</view>
+        <view>17700</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="income flex">
+        <view class="left">提现</view>
+        <view class="right right1">-500</view>
+      </view>
+      <view class="income flex">
+        <view>2020-10-23</view>
+        <view>17700</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="income flex">
+        <view class="left">收入</view>
+        <view class="right">+700</view>
+      </view>
+      <view class="income flex">
+        <view>2020-10-23</view>
+        <view>17700</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="income flex">
+        <view class="left">提现</view>
+        <view class="right right1">-500</view>
+      </view>
+      <view class="income flex">
+        <view>2020-10-23</view>
+        <view>17700</view>
+      </view>
+    </view>
+  </view>
+
 </view>

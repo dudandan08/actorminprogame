@@ -28,7 +28,7 @@ class Http {
 
     return new Promise((resolve, reject) => {
       let userId=wx.getStorageSync('userId') || ""
- 
+      
       wx.request({
         url: Base.restUrl + url,
         header: { 
@@ -39,9 +39,10 @@ class Http {
         data: userId ? {
 					userId,
 					...data
-				} : data,
+        } : data,
+
         success(res) {
-          resolve(res.data)
+          resolve(res)
         },
         fail() {
           reject('请求的接口错误')
@@ -61,12 +62,13 @@ class Http {
           'content-type': 'application/json',
           token: wx.getStorageSync('token') || ""
         },
-        data: userId ? {
-					userId,
-					...data
-				} : data,
+        // data: userId ? {
+				// 	userId,
+				// 	...data
+        // } : data,
+        data:data,
         success(res) {
-          resolve(res)
+          resolve(res.data)
         },
         fail() {
           reject('请求的接口错误')

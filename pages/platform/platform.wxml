@@ -1,11 +1,7 @@
 <!--pages/platform/platform.wxml-->
-<view class="page">
+<!-- <view class="page">
 	<view class="page__bd">
 		<view class="weui-grids">
-			<!-- <navigator class="weui-grid" hover-class="weui-grid_active">
-					<image class="weui-grid__icon" src="/image/icon_tabbar.png"></image>
-					<view class="weui-grid__label">艺人注册</view>
-			</navigator> -->
 			<navigator url="/pages/actorApply/actorApply" class="weui-grid" hover-class="weui-grid_active">
 					<image class="weui-grid__icon" src="/image/icon_tabbar.png" ></image>
 					<view class="weui-grid__label">艺人申请</view>
@@ -43,6 +39,80 @@
 					<view class="weui-grid__label">基本资料编辑</view>
 			</navigator>
 
+		</view>
+	</view>
+</view> -->
+<view class="content">
+	<view style="height: 25rpx;"></view>
+	<view class="info info1">
+		<view class="header">艺人信息</view>
+		<view class="list flex">
+			<view class="item" bindtap="goTo" data-url="/pages/actorApply/actorApply">
+				<view class="image">
+					<image src="../../image/item1.png"></image>
+				</view>
+				<view>艺人注册</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/actorApply/actorApply">
+				<view class="image">
+					<image src="../../image/item2.png"></image>
+				</view>
+				<view>艺人申请</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/authentication/authentication">
+				<view class="image">
+					<image src="../../image/item3.png"></image>
+				</view>
+				<view>实名认证</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/actorinfo/actorinfo">
+				<view class="image">
+					<image src="../../image/item4.png"></image>
+				</view>
+				<view>艺人信息</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/verification/verification">
+				<view class="image">
+					<image src="../../image/item5.png"></image>
+				</view>
+				<view>艺人验证</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/edit/edit">
+				<view class="image">
+					<image src="../../image/item6.png"></image>
+				</view>
+				<view>基本信息</view>
+			</view>
+		</view>
+	</view>
+	<view style="height: 25rpx;"></view>
+	<view class="info info1">
+		<view class="header">艺人信息</view>
+		<view class="list flex">
+			<view class="item" bindtap="goTo" data-url="/pages/actorAmount/actoramount">
+				<view class="image">
+					<image src="../../image/item7.png"></image>
+				</view>
+				<view>账户信息</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/extract/extract">
+				<view class="image">
+					<image src="../../image/item8.png"></image>
+				</view>
+				<view>资产提现</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/bill/bill">
+				<view class="image">
+					<image src="../../image/item9.png"></image>
+				</view>
+				<view>账单记录</view>
+			</view>
+			<view class="item" bindtap="goTo" data-url="/pages/card/card">
+				<view class="image">
+					<image src="../../image/item10.png"></image>
+				</view>
+				<view>银行卡</view>
+			</view>
 		</view>
 	</view>
 </view>

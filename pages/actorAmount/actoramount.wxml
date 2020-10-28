@@ -1,5 +1,5 @@
 <!--pages/actorAmount/actoramount.wxml-->
-<view class="page" >
+<!-- <view class="page" >
 	<view class="page__bd page__bd_spacing">
 		<view class="weui-flex">
 			<view class="weui-flex__item" ><view class="placeholder" >总金额：￥{{totalMoney}}</view></view>
@@ -9,6 +9,28 @@
 		</view>
 		<view  class="weui-flex" >
 			<view class="weui-flex__item"><view class="placeholder">已提金额：￥{{withdrawMoney}}</view></view>
+		</view>
+	</view>
+</view> -->
+<view>
+	<view class="overall">
+		<view class="image">
+			<image src="../../image/bgc.png"></image>
+		</view>
+		<view class="box">
+			<view style="height: 100rpx;"></view>
+			<view class="title">总金额（元）</view>
+			<view class="all">{{totalMoney}}</view>
+			<view class="list flex">
+				<view class="item">
+					<view >可提现金额（元）</view>
+					<view class="future">{{depositMoney}}</view>
+				</view>
+				<view  class="item">
+					<view>已提现金额（元）</view>
+					<view class="before">{{withdrawMoney}}</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </view>

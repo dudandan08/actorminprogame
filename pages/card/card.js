@@ -115,7 +115,7 @@ Page({
     }
     this.WxValidate = new WxValidate(rules, message);
   },
-  // 提交表单
+  // 提交
   formSubmit(e) {
     console.log(e)
     let params = e.detail.value

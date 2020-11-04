@@ -33,19 +33,24 @@ Page({
     })
     let url = "/bankinfo/1";//+app.globalData.user.userId;
     console.log(url);
-    http.sendGetRequest(url, null).then(resp => {
-      console.log("艺人帐户 返回结果：" + JSON.stringify(resp));
-      let result = resp.data;
+    http.sendGetRequest(url, null).then(result => {
+      console.log("艺人帐户 返回结果：" + JSON.stringify(result));
+      // console.log(resp)
+      // console.log(resp.data)
+      // let result = resp.data;
       if (result.code == 200) {
         if (result.data != null) {
+          // this.setData({
+          //   "form.id": result.data.id
+          // })
+          // this.setData({
+          //   "form.index": result.data.bankType
+          // })
+          // this.setData({
+          //   "form.seleNull": result.data.bankType
+          // })
           this.setData({
-            "form.id": result.data.id
-          })
-          this.setData({
-            "form.index": result.data.bankType
-          })
-          this.setData({
-            "form.seleNull": result.data.bankType
+            "form.bank": result.data.bankType
           })
           this.setData({
             "form.site": result.data.bankName
@@ -70,13 +75,13 @@ Page({
     // 验证规则
     this.initValidate();
     // 获取银行卡信息
-    this.getData()
+    // this.getData()
   },
   getData(){
     let id=wx.getStorageSync('userId')
-    http.sendGetRequest("/api-wx/bankinfo/"+id,)
+    http.sendGetRequest("/bankinfo/"+id,)
     .then(res => {
-    
+      console.log(res)
     })
   },
   initValidate() {

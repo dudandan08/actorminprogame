@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    form: { //增加form子元素
+    form: { 
       name: "",
       tel: "",
       password1: '',

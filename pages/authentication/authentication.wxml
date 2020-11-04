@@ -2,8 +2,9 @@
 <view class="authentication">
   <form catchsubmit="formSubmit">
   <view class="item2">
-    <input bindinput="realName" value="{{form.realName}}" name="realName"  placeholder="姓名"></input>
+    <input bindinput="realName" value="{{form.realName}}" name="realName"  placeholder="请输入姓名"></input>
   </view>
+
   <view class="item2">
     <view class="select">
       <picker name="certificateType" bindchange="bindPickerChange" value="{{index}}" range="{{credentialTypes}}">
@@ -17,7 +18,7 @@
     </view>
   </view>
   <view class="item2">
-    <input bindinput="certificateNo" value="{{form.certificateNo}}" name="certificateNo"  placeholder="证件号"></input>
+    <input bindinput="certificateNo" value="{{form.certificateNo}}" name="certificateNo"  placeholder="请输入证件号"></input>
   </view>
   <view class="item itme1">
     <view class="right1">
@@ -37,8 +38,8 @@
       </view>
     </view>
   </view>
-  <view class="submit">
-   <button class="submit1" formType="submit"> 确 定</button>
-  </view>
+  <view class="btn">
+      <button formType="submit" hover-class="none">确 定</button>
+    </view>
   </form>
 </view>

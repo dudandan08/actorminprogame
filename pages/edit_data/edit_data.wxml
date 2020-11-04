@@ -1,0 +1,58 @@
+<!--pages/edit_data/edit_data.wxml-->
+<view class="content">
+  
+  <view class="kong"></view>
+  <form catchsubmit="formSubmit">
+    <view class="other_info">
+      <view class="top">
+        <view class="upload" bindtap="choose">
+          <input style="display:none" value="{{form.userPhoto}}" name="userPhoto"></input>
+          <image src="{{form.userPhoto}}"></image>
+        </view>
+        <input class="name" value="{{form.nickName}}" placeholder="请输入用户名" placeholder-class="color" name="nickName"/>
+      </view>
+      <view class="kong"></view>
+      <view class="list_item">
+        <view class="item_left">性别</view>
+        <!-- <input class="right_input" value="女" wx:if="{{form.gender==1}}" />
+        <input class="right_input" value="男" wx:elif="{{form.gender==2}}" /> -->
+        <input style="display:none"  value="{{form.gender}}" placeholder="请选择性别" name="gender" />
+        <picker range="{{array}}" value="{{form.gender}}" class="right_input" value="{{index}}" bindchange="change1">
+          <view class="{{form.gender ? '':'date'}}">{{!form.gender ? '请选择性别':form.gender==1 ? '女':'男'}}</view>
+        </picker>
+      </view>
+      <view class="list_item">
+        <view class="item_left">出生日期</view>
+        <input style="display:none" value="{{form.birthDate}}" name="birthDate"></input>
+        <picker data-field="date" class="right_input" mode="date" value="{{form.birthDate}}"
+          bindchange="bindDateChange">
+          <view class="{{form.birthDate ? '':'date'}}">{{form.birthDate ? form.birthDate :'请选择出生日期'}}</view>
+        </picker>
+      </view>
+      <view class="list_item">
+        <view class="item_left">年龄</view>
+        <input class="right_input" value="{{form.age}}" placeholder="请输入年龄" name="age" />
+      </view>
+      <view class="list_item">
+        <view class="item_left">邮箱</view>
+        <input class="right_input" value="{{form.email}}" placeholder="请输入邮箱" name="email" />
+      </view>
+      <view class="list_item">
+        <view class="item_left">QQ</view>
+        <input class="right_input" value="{{form.qq}}" placeholder="请输入qq账号"  name="qq"/>
+      </view>
+      <view class="list_item">
+        <view class="item_left">支付宝</view>
+        <input class="right_input" value="{{form.alipayAccount}}" placeholder="请输入支付宝账号"  name="alipayAccount"/>
+      </view>
+      <view class="list_item">
+        <view class="item_left">地址</view>
+        <input class="right_input" value="{{form.currentAddress}}" placeholder="请输入地址" name="currentAddress" />
+      </view>
+    </view>
+    <view class="btn">
+      <button formType="submit" hover-class="none">确 定</button>
+    </view>
+  </form>
+
+</view>

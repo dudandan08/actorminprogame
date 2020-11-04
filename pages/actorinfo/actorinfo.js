@@ -21,24 +21,24 @@ Page({
   },
 
   loadData(){
-    wx.showLoading({
-      title: '加载中...',
-    })
     let userId = wx.getStorageSync('userId') || ""
       let url= "/actor/info/"+userId;
-      console.log(url);
-      http.sendGetRequest(url,null).then(resp=>{
-        console.log("艺人信息 返回结果："+ JSON.stringify(resp) );
-        let result=resp.data;
+      http.sendGetRequest(url,null).then(result=>{
+       console.log(result)
         if(result.code==200){
-          if(result.data!=null){
-            this.setData({
-              actorsData:result.data
-            })
-           
-          }
+          this.setData({
+            actorsData:result.data
+          })
+        }else{
+          wx.showToast({
+            title: result.message,
+            icon: 'none',
+          })
+          setTimeout(function () {
+          wx.navigateBack({
+          })
+          }, 1000);
         }
-        wx.hideLoading();
       })
   },
 

@@ -1,36 +1,46 @@
-<!--pages/person/person.wxml-->
-  <view class="userinfo">
-    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    艺人注册，艺人申请加入，艺人账户，艺人提现
-  </view>
-<view class="container">
-  <view class='title'>
-    <view class='titleSel' bindtap='titleClick' data-idx='0'>
-      <text>基本信息</text>
-      <hr class="{{0 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}}" />
-    </view>
-    <view class='titleSel' bindtap='titleClick' data-idx='1'>
-      <text>帐单</text>
-      <hr class="{{1 == currentIndex ? 'headerLineSel' : 'headerLineUnsel'}} " />
-    </view>
-  </view>
-   <!--内容布局-->
-  <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
-    <swiper-item class='swiper'>
-      <view wx:for="{{firstList}}" class='recordItem'>
-        <view class='name'>昵称：{{item}}</view>
+<view class="content">
+  <view class="kong"></view>
+  <view class="top">
+    <view class="left">
+      <view class="h-mmg">
+        <image src="../../image/head.png"></image>
       </view>
-    </swiper-item>
-    <swiper-item class='swiper' class='swiper'>
-      <view wx:for="{{secondList}}" class='recordItem'>
-        <view class='name'>昵称：{{item}}</view>
+      <view class="info" wx:if="{{token}}">
+        <view>{{user.userName}}</view>
+        <view class="phone">{{user.mobile}}</view>
       </view>
-    </swiper-item>
-  </swiper>
-
-<!-- <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+      <view class="info" wx:else bindtap="login">
+        <view>立即登录</view>
+      </view>
+    </view>
+    <view class="right" wx:if="{{token}}" bindtap="goTo">
+      <view class="next">
+        <image src="../../image/next.png"></image>
+      </view>
+    </view>
   </view>
-  --> 
+  <view class="kong"></view>
+  <view class="other_info">
+    <view class="list_item" wx:if="{{form.gender}}">
+      <view class="item_left">性别</view>
+      <view class="item_right">{{form.gender==1?'女':'男'}}</view>
+    </view>
+    <view class="list_item" wx:if="{{form.birthDate}}">
+      <view class="item_left">出生日期</view>
+      <view class="item_right">{{form.birthDate}}</view>
+    </view>
+    <view class="list_item" wx:if="{{form.email}}">
+      <view class="item_left">邮箱</view>
+      <view class="item_right">{{form.email}}</view>
+    </view>
+    <view class="list_item" wx:if="{{form.nickName}}">
+      <view class="item_left">支付宝</view>
+      <view class="item_right">{{form.nickName}}</view>
+    </view>
+    <view class="list_item" wx:if="{{form.currentAddress}}">
+      <view class="item_left">地址</view>
+      <view class="item_right">{{form.currentAddress}}</view>
+    </view>
+  </view>
+  <view class="btn" wx:if="{{token}}" bindtap="out">退出登录</view>
 </view>

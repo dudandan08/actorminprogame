@@ -1,8 +1,9 @@
-// pages/person/person.js
+
+import WxValidate from "../../utils/wxValidate.js";
 import {
   Http
 } from '../../utils/http'
-const app = getApp()
+const app = getApp();
 const http = new Http();
 Page({
 
@@ -10,87 +11,73 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '',
-    currentIndex: 0,
-    "firstList": ["LXT", "LXT", "LXT", "LXT", "LXT", "LXT"],
-    "secondList": ["GFF", "GFF", "GFF", "GFF", "GFF", "GFF", "GFF", "GFF"],
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    token: "",
+    user: "",
+    form: {
+      userPhoto: "../../image/head.png",
+      nickName: '',
+      gender: 0,
+      birthDate: "",
+      age: "",
+      email: "",
+      qq: '',
+      alipayAccount: "",
+      currentAddress: "",
+    },
   },
+  canILogin() {
 
-  /**
-   * 生命周期函数--监听页面加载
+  },
+onLoad(){
+  console.log("1112")
+  
+},
+ /**
+   * 生命周期函数--监听页面显示
    */
-  onLoad: function (options) {
-    // post get测试
-    // this.post()
-    // this.get()
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        console.log(app.globalData.userInfo)
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+  onShow() {
+    console.log("111")
+    this.setData({
+      token: wx.getStorageSync('token'),
+      user: wx.getStorageSync('user')
+    })
+    if (wx.getStorageSync('token')) {
+      this.getUserinfo()
+    }
+  },
+  // 获取用户信息
+  getUserinfo() {
+    let userId = wx.getStorageSync('userId') || ""
+    http.sendGetRequest("/userinfo/" + userId)
+      .then(res => {
+        console.log(res)
+        console.log(res.data.data)
+        if (res.code == 200) {
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            form: res.data
           })
         }
       })
-    }
   },
-  post(){
-    http.sendPostRequest("/actor/apply/save",{platformId:"1",guildId:"14",applyDescr:""})
-    .then(res => {
-     
+  // 跳转至编辑资料
+  goTo() {
+    wx.navigateTo({
+      url: '/pages/edit_data/edit_data',
     })
   },
-  get(){
-    http.sendGetRequest("/actor/info")
-    .then(res => { 
+  // 跳转至登录
+  login() {
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  // 退出登录
+  out() {
+    wx.clearStorage()
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      token:""
     })
   },
-//swiper切换时会调用
-pagechange: function (e) {
-  if ("touch" === e.detail.source) {
-    let currentPageIndex = this.data.currentIndex
-    currentPageIndex = (currentPageIndex + 1) % 2
-    this.setData({
-      currentIndex: currentPageIndex
-    })
-  }
-},
-//用户点击tab时调用
-titleClick: function (e) {
-  let currentPageIndex =
-    this.setData({
-      //拿到当前索引并动态改变
-      currentIndex: e.currentTarget.dataset.idx
-    })
-},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -98,12 +85,8 @@ titleClick: function (e) {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
+
 
   /**
    * 生命周期函数--监听页面隐藏

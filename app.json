@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/login/login",
+    
     "pages/index/index",
+    "pages/login/login",
     "pages/logs/logs",
     "pages/person/person",
     "pages/platform/platform",
@@ -14,7 +15,8 @@
     "pages/edit/edit",
     "pages/card/card",
     "pages/verification/verification",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/edit_data/edit_data"
   ],
   "window": {
     "backgroundTextStyle": "light",

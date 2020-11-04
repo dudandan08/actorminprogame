@@ -14,17 +14,16 @@ Page({
   data: {
     form: { //增加form子元素
       name: "",
+      tel: "",
       password1: '',
       password2: '',
-      flag: 1,
     },
-    kong:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 验证规则
     this.initValidate();
   },
@@ -33,19 +32,22 @@ Page({
       name: {
         required: true,
       },
+      tel: {
+        required: true,
+      },
       password1: {
         required: true,
       },
       password2: {
         required: true,
       },
-      flag: {
-        required: true,
-      }
     }
     let message = {
       name: {
         required: '请输入姓名',
+      },
+      tel: {
+        required: '请输入手机号码',
       },
       password1: {
         required: '请输入密码',
@@ -53,42 +55,13 @@ Page({
       password2: {
         required: '请输入确认密码',
       },
-      flag: {
-        required: '请勾选注册条款',
-      }
     }
     this.WxValidate = new WxValidate(rules, message);
   },
-  // 姓名
-  ming(e) {
-    this.setData({
-      "form.name": e.detail.value
-    })
-  },
-  // 密码
-  word1(e) {
-    this.setData({
-      "form.password1": e.detail.value
-    })
-  },
-  // 确认密码
-  word2(e) {
-    this.setData({
-      "form.password2": e.detail.value
-    })
-  },
-  // 注册条款
-  radio(e) {
-    if (e.currentTarget.dataset.type) {
-      this.setData({
-        "form.flag": ""
-      })
-    }else{
-      this.setData({
-        "form.flag": 1
-      }) 
-    }
-  },
+
+
+
+
 
   // 提交表单
   formSubmit(e) {
@@ -100,6 +73,12 @@ Page({
       console.log(error)
       switch (error.param) {
         case "name":
+          wx.showToast({
+            title: error.msg,
+            icon: "none"
+          })
+          break;
+        case "tel":
           wx.showToast({
             title: error.msg,
             icon: "none"
@@ -117,47 +96,43 @@ Page({
             icon: "none"
           })
           break;
-        case "flag":
-          wx.showToast({
-            title: error.msg,
-            icon: "none"
-          })
-          break;
       }
     } else {
       console.log("注册接口 开始")
-      let paramsData={
-        userName:params.name,
-        pwd:params.password1,
-        confirmPassword:params.password2,
-        mobile:""
+      let paramsData = {
+        userName: params.name,
+        pwd: params.password1,
+        confirmPassword: params.password2,
+        mobile: params.tel
       }
-      console.log(paramsData);
-      let url=baseUrl + api + "/user/register";
+      let url = baseUrl + api + "/user/register";
       wx.request({
         url: url,
         data: paramsData,
         method: "POST",
-        success:function(resp){
-          console.log("注册成功 返回结果："+ JSON.stringify(resp) );
-          let result=resp.data;
-          if(result.code==200){
-            if(result.data){
+        success: function (resp) {
+          let result = resp.data;
+          console.log(result )
+          if (result.code == 200) {
+            if (result.data) {
               wx.showToast({
                 title: '注册成功，请重新登录',
-                icon: 'success',
-                duration: 2000
+                icon: 'none',
               });
-              wx.navigateTo({
-                url: '/pages/login/login'
-              });
-              // wx.switchTab({
-              //   url: '/pages/login/login'
-              // });
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+              }, 1000);
             }
+          }else{
+            wx.showToast({
+              title:result.message,
+              icon: 'none',
+            })
           }
         },
-        fail:function(){
+        fail: function () {
           console.log("注册：网络错误")
         }
       })
@@ -166,49 +141,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

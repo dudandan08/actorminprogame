@@ -1,17 +1,20 @@
-<!--pages/verification/verification.wxml-->
-<view class="from">
-  <form  catchsubmit="formSubmit">
-    <view class="item">
-      <view class="left"  >姓名</view>
-      <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
+
+<view class="content">
+  <view class="kong"></view>
+  <form catchsubmit="formSubmit">
+    <view class="other_info">
+    <view class="list_item" >
+      <view class="item_left">姓名</view>
+      <input class="right_input" value="{{form.name}}"  placeholder="请输入姓名" name="name" placeholder-class="color"/>
     </view>
-    <view class="item">
-      <view class="left">手机号</view>
-      <input name="tel" type="number" value="{{form.tel}}" bindinput="phone" placeholder="请输入手机号"></input>
+    <view class="list_item" >
+      <view class="item_left">手机号</view>
+      <input class="right_input" value="{{form.tel}}" value="" placeholder="请输入手机号"name="tel" placeholder-class="color" />
     </view>
-    <view class="submit">
-      <view class="left"> </view>
-        <button class="submit1"  type="primary" formType="submit">确 定</button>
+  </view>
+  <view class="btn">
+      <button formType="submit" hover-class="none">确 定</button>
     </view>
   </form>
+ 
 </view>

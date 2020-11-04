@@ -14,11 +14,16 @@ Page({
   onLoad: function (options) {
 
   },
-  goTo(e){
-console.log(e)
-wx.navigateTo({
-  url:e.currentTarget.dataset.url,
-})
+  goTo(e) {
+    if (!wx.getStorageSync('token')) {
+      wx.navigateTo({
+        url: "/pages/login/login",
+      })
+      return
+    }
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

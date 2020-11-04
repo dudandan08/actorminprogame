@@ -35,10 +35,8 @@
       <view class="left">申请说明：</view>
       <textarea bindinput="shuo" value="{{form.explain}}" name="explain"></textarea>
     </view>
-    <view class="submit">
-      <view class="left"> </view>
-      <button class="submit1" formType="submit">确 定</button>
-      <!-- <view class="submit1">申 请 </view> -->
+    <view class="btn">
+      <button formType="submit" hover-class="none">确 定</button>
     </view>
   </form>
 

@@ -24,8 +24,8 @@
   <view style="height: 100rpx;"></view>
   <form catchsubmit="formSubmit">
     <view class="form">
-      <input placeholder="请输入用户名" value="{{form.name}}" bindinput="ming" name="name" />
-      <input placeholder="请输入用户密码" password value="{{form.password}}" bindinput="phone" name="password" />
+      <input placeholder="请输入用户名" value="{{form.name}}"  name="name" />
+      <input placeholder="请输入用户密码" password value="{{form.password}}"  name="password" />
     </view>
     <button formType="submit" hover-class="none" bindtap='goLogin'>登 录</button>
   </form>

@@ -1,9 +1,9 @@
 // pages/card/card.js
 import WxValidate from "../../utils/wxValidate.js";
 
-import {Http} from"../../utils/http";
+import { Http } from "../../utils/http";
 
-var util=require('../../utils/util');
+var util = require('../../utils/util');
 
 const http = new Http();
 const app = getApp()
@@ -16,57 +16,68 @@ Page({
   data: {
     array: ['工商银行', '建设银行', '交通银行', '农业银行'],
     form: {
-      id:0,
-      seleNull:null,
+      id: 0,
+      seleNull: null,
       index: 0,
       name: "",
       site: "",
       number: "",
-    }
+      bank: '',
+    },
+    index: 0,
   },
 
-  loadData(){
+  loadData() {
     wx.showLoading({
       title: '加载中...',
     })
-      let url= "/bankinfo/1";//+app.globalData.user.userId;
-      console.log(url);
-      http.sendGetRequest(url,null).then(resp=>{
-        console.log("艺人帐户 返回结果："+ JSON.stringify(resp) );
-        let result=resp.data;
-        if(result.code==200){
-          if(result.data!=null){
-            this.setData({
-              "form.id": result.data.id
-            })
-            this.setData({
-              "form.index": result.data.bankType
-            })
-            this.setData({
-              "form.seleNull": result.data.bankType
-            })
-            this.setData({
-              "form.site": result.data.bankName
-            })  
-            this.setData({
-              "form.name": result.data.accountUserName
-            });
-            this.setData({
-              "form.number": result.data.cardNo
-            });            
-           
-          }
+    let url = "/bankinfo/1";//+app.globalData.user.userId;
+    console.log(url);
+    http.sendGetRequest(url, null).then(resp => {
+      console.log("艺人帐户 返回结果：" + JSON.stringify(resp));
+      let result = resp.data;
+      if (result.code == 200) {
+        if (result.data != null) {
+          this.setData({
+            "form.id": result.data.id
+          })
+          this.setData({
+            "form.index": result.data.bankType
+          })
+          this.setData({
+            "form.seleNull": result.data.bankType
+          })
+          this.setData({
+            "form.site": result.data.bankName
+          })
+          this.setData({
+            "form.name": result.data.accountUserName
+          });
+          this.setData({
+            "form.number": result.data.cardNo
+          });
+
         }
-        wx.hideLoading();
-      })
+      }
+      wx.hideLoading();
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 验证规则
     this.initValidate();
+    // 获取银行卡信息
+    this.getData()
+  },
+  getData(){
+    let id=wx.getStorageSync('userId')
+    http.sendGetRequest("/api-wx/bankinfo/"+id,)
+    .then(res => {
+    
+    })
   },
   initValidate() {
     let rules = {
@@ -85,7 +96,7 @@ Page({
     }
     let message = {
       bank: {
-        required: '请选择银行'
+        required: '请输入银行名称'
       },
       site: {
         required: '请输入开户行',
@@ -136,33 +147,40 @@ Page({
     } else {
       console.log("绑定银行卡")
       let userid;
-      if(app.globalData.user==null){
-        userid=app.getLocalStorage("userId");
-      }else{
-        userid=app.globalData.user.userId;
+      if (app.globalData.user == null) {
+        userid = app.getLocalStorage("userId");
+      } else {
+        userid = app.globalData.user.userId;
       }
-      let paramsData={
-        "id":params.id,
-        "userId":userid,
-        "bankType":params.index,
-        "bankName":params.site,
-        "bankAmount":params.name,
-        "cardNo":params.number
+      let paramsData = {
+        // "id":params.id,
+        "userId": userid,
+        // "bankType":params.index,
+        "bankType": params.bank,
+        "bankName": params.site,
+        "bankAmount": params.name,
+        "cardNo": params.number
       }
-      console.log("实名认证上传的参对象："+JSON.stringify(paramsData) );
+      console.log("实名认证上传的参对象：" + JSON.stringify(paramsData));
       //let url=baseUrl + api + "/userreal/save";
-      let url= "/bankinfo/update";
-      http.sendPostRequest(url,paramsData).then(resp=>{
-        console.log("绑定银行卡 返回结果："+ JSON.stringify(resp) );
-        let result=resp;
-        if(result.code==200){
+      let url = "/bankinfo/update";
+      http.sendPostRequest(url, paramsData).then(resp => {
+        console.log("绑定银行卡 返回结果：" + JSON.stringify(resp));
+        let result = resp.data;
+        console.log(result.data)
+        if (result.code == 200) {
           wx.showToast({
             title: result.message,
-            icon: 'success',
-            duration: 2000
+            icon: 'none',
           });
-          wx.switchTab({
-            url: '/pages/platform/platform'
+          setTimeout(function () {
+            wx.navigateBack({
+            })
+          }, 1000);
+        } else {
+          wx.showToast({
+            title: result.message,
+            icon: 'none',
           });
         }
       })
@@ -196,49 +214,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.loadData();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

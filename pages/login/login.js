@@ -1,8 +1,10 @@
 
 import WxValidate from "../../utils/wxValidate.js";
-
+import {
+  Http
+} from '../../utils/http'
 const app = getApp();
-
+const http = new Http();
 Page({
 
   /**
@@ -10,11 +12,7 @@ Page({
    */
   data: {
     isLogin:true,
-    loginData:{
-      username:"",
-      pwd:""
-    },
-    form: {//增加form子元素
+    form: {
       name: "",
       password: '',
     }
@@ -34,13 +32,13 @@ Page({
   onLoad: function (options) {
     // 验证规则
     this.initValidate();
-    let loginstatus=app.getLocalStorage("islogin");
-    console.log(loginstatus);
-    if(loginstatus){
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    }
+    // let loginstatus=app.getLocalStorage("islogin") ;
+    // console.log(loginstatus);
+    // if(loginstatus){
+    //   wx.switchTab({
+    //     url: '/pages/index/index',
+    //   })
+    // }
   },
   initValidate() {
     let rules = {
@@ -62,17 +60,17 @@ Page({
     this.WxValidate = new WxValidate(rules, message);
   },
   // 姓名
-  ming(e) {
-    this.setData({
-      "form.name": e.detail.value
-    })
-  },
-  // 密码
-  phone(e) {
-    this.setData({
-      "form.password": e.detail.value
-    })
-  },
+  // ming(e) {
+  //   this.setData({
+  //     "form.name": e.detail.value
+  //   })
+  // },
+  // // 密码
+  // phone(e) {
+  //   this.setData({
+  //     "form.password": e.detail.value
+  //   })
+  // },
   // 提交表单
   formSubmit(e) {
     // console.log(e)
@@ -96,30 +94,56 @@ Page({
           break
       }
     }else{
-      console.log("登录接口")
-      //console.log(params.name);
-      app.login({username:params.name,password:params.password},regs=>{
-       console.log("login result : "+regs);
-       let result=regs.data;
-       console.log(result.data);     
-       if(result.code=200&&result.data!=null){
+      http.sendPostRequest("/user/doLogin", { userName:params.name,pwd:params.password })
+        .then(res=> {
+          console.log(res)
+          let result=res.data;
+          if(result.code==200){
             
-         app.globalData.user=result.data
+        app.globalData.user=result.data
          app.globalData.isLogin=true;
          app.globalData.token=result.data.tokenId
-         
          wx.setStorageSync('userId', result.data.userId)
          wx.setStorageSync('token', result.data.tokenId)
          app.setLocalStorage("user",result.data);
          app.setLocalStorage("islogin",true);            
          app.setLocalStorage("token",result.data.tokenId);
-        
-         wx.switchTab({
-          url: '/pages/index/index',
+         wx.navigateBack({
+  
          })
-       }
-      })
-      
+        //  wx.switchTab({
+        //       url: '/pages/index/index',
+        //      })
+          }else{
+            wx.showToast({
+              title:result.data.message,
+              icon: 'none',
+            })
+          }
+        })
+      // app.login({username:params.name,password:params.password},regs=>{
+      //  console.log("login result : "+regs);
+      //  let result=regs.data;
+      //  console.log(result.data);     
+      //  if(result.code=200&&result.data!=null){
+      //   //  app.globalData.user=result.data
+      //   //  app.globalData.isLogin=true;
+      //   //  app.globalData.token=result.data.tokenId
+      //    wx.setStorageSync('userId', result.data.userId)
+      //    wx.setStorageSync('token', result.data.tokenId)
+      //   //  app.setLocalStorage("user",result.data);
+      //   //  app.setLocalStorage("islogin",true);            
+      //   //  app.setLocalStorage("token",result.data.tokenId);
+      //    wx.switchTab({
+      //     url: '/pages/index/index',
+      //    })
+      //  }else{
+      //   wx.showToast({
+      //     title: result.message,
+      //     icon: 'none',
+      //   })
+      //  }
+      // })
     }
   },
   register(){

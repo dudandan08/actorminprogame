@@ -51,7 +51,7 @@ Page({
     })
   },
   // 手机号
-  phone(e){
+  phone(e) {
     this.setData({
       "form.tel": e.detail.value
     })
@@ -78,10 +78,26 @@ Page({
           })
           break
       }
-    }else{
-      http.sendPostRequest('/actor/macth' ,{fullName:e.detail.value.name,mobile:e.detail.value.tel}).then(res => {
+    } else {
+      http.sendPostRequest('/actor/macth', { fullName: e.detail.value.name, mobile: e.detail.value.tel }).then(res => {
         console.log(res)
-        console.log(res.code)
+        console.log(res.data.code)
+        if (res.data.code = 200) {
+          wx.showToast({
+            title: '验证成功',
+            icon: 'none',
+          })
+          setTimeout(function () {
+            wx.switchTab({
+              url: '/pages/platform/platformn'
+            })
+          }, 1000);
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+          })
+        }
         // if (res.code == 200) {
         //   this.setData({
         //     total: res.data

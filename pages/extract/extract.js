@@ -32,6 +32,15 @@ Page({
         this.setData({
           total: res.data
         })
+      }else{
+        wx.showToast({
+          title: res.message,
+          icon: 'none',
+        })
+        setTimeout(function () {
+          wx.navigateBack({
+          })
+        }, 1000);
       }
     })
   },
@@ -74,7 +83,7 @@ Page({
           break;
       }
     } else {
-      console.log("登录接口")
+      console.log("提现接口")
     }
     return false
   },

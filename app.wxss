@@ -51,3 +51,67 @@ image{
 .icon-shezhi:before{content: '\e62a';}
 .icon-shanchu:before{content: '\e629';}
 .icon-dianhua:before{content: '\e61b';}
+.kong {
+  height: 10rpx;
+}
+
+
+
+.list_item {
+  padding: 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 107rpx;
+  height: 107rpx;
+  background: #FEFEFE;
+}
+.item_left{
+font-size: 34rpx;
+font-weight: 500;
+color: #333333;
+}
+.item_right{
+font-size: 28rpx;
+font-weight: 500;
+color: #DF5E29;
+  }
+  .btn {
+    position: fixed;
+    left: 20rpx;
+    bottom: 45rpx;
+    width: 710rpx;
+    height: 82rpx;
+    line-height: 82rpx;
+    text-align: center;
+    background: #DF5E29;
+    border-radius: 41rpx;
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #FFFFFF;
+  }
+button{
+  position: fixed;
+  left: 20rpx;
+  bottom: 45rpx;
+  width: 710rpx !important;
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+  background: #DF5E29;
+  border-radius: 41rpx !important;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+.right_input {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-left: 60rpx;
+  text-align: right;
+  flex: 1;
+}
+.color {
+  color: #999;
+}

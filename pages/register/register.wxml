@@ -1,8 +1,8 @@
 <!--pages/register/register.wxml-->
 
 <view class="from">
-  <form catchsubmit="formSubmit">
-    <view class="item">
+
+  <!-- <view class="item">
      
       <input bindinput="ming" value="{{form.name}}" name="name" placeholder="请输入用户名"></input>
     </view>
@@ -16,7 +16,7 @@
 
     </view>
     <view class="item">
-     
+    
       <view class="right">
         <input style="display:none" name="flag" value="{{form.flag}}"></input>
         <view wx:if="{{!form.flag}}" class="img" bindtap="radio">
@@ -27,9 +27,22 @@
         </view>
         <view>同意注册条款</view>
       </view>
+    </view> -->
+</view>
+<view class="content">
+  <view style="height: 60rpx;"></view>
+  <view class="image">
+    <image src="../../image/logo.png"></image>
+  </view>
+  <view style="height: 100rpx;"></view>
+  <form catchsubmit="formSubmit">
+    <view class="form">
+      <input placeholder="请输入用户名" value="{{form.name}}"  name="name" />
+      <input placeholder="请输入手机号" value="{{form.tel}}"  name="tel" />
+      <input placeholder="请输入用户密码" password value="{{form.password1}}"  name="password1" />
+      <input placeholder="请确认密码" value="{{form.password2}}"  name="password2" />
     </view>
-    <view class="submit">
-      <button class="submit1" formType="submit"> 注 册</button>
-    </view>
+    <button formType="submit" hover-class="none" bindtap='goLogin'>注册</button>
   </form>
+
 </view>

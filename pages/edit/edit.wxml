@@ -7,7 +7,6 @@
         <view class="flex img">
           <input style="display:none" value="{{form.userPhoto}}" name="userPhoto"></input>
           <view class="img1" wx:if="{{!form.userPhoto}}">上传图片</view>
-          <!-- <image wx:if="{{!imgs}}" mode="aspectFill" src="/image/img.png"></image> -->
           <image wx:else mode="aspectFill" src="{{form.userPhoto}}"></image>
         </view>
         <view class="flex bottom">

@@ -48,6 +48,7 @@ onLoad(){
   // 获取用户信息
   getUserinfo() {
     let userId = wx.getStorageSync('userId') || ""
+    console.log(userId);
     http.sendGetRequest("/userinfo/" + userId)
       .then(res => {
         console.log(res)

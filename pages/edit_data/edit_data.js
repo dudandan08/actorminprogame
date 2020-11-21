@@ -12,6 +12,7 @@ Page({
   data: {
     imgsUrl: "http://62.234.27.2:8080",
     form:{
+      userId:0,
       userPhoto:"../../image/head.png",
       nickName:'',
       gender:0,
@@ -176,7 +177,7 @@ this.getUserinfo()
           break;
       }
     } else {
-      http.sendPostRequest("/user/update", { userPhoto: params.userPhoto, nickName: params.nickName, gender: params.gender, age: params.age, birthDate: params.birthDate, email: params.email, qq: params.qq, alipayAccount: params.alipayAccount, currentAddress: params.currentAddress })
+      http.sendPostRequest("/user/update", {userId: params.userId, userPhoto: params.userPhoto, nickName: params.nickName, gender: params.gender, age: params.age, birthDate: params.birthDate, email: params.email, qq: params.qq, alipayAccount: params.alipayAccount, currentAddress: params.currentAddress })
         .then(res => {
           console.log(res.data)
           if (res.data.code == 200) {

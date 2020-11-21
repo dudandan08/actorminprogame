@@ -48,7 +48,22 @@ Page({
     // 验证规则
     this.initValidate();
     console.log(this.data.gangedData)
+    this.getData()
+  },
+  getData() {
+    http.sendGetRequest("/platform/all", { })
+      .then(res => {
+        console.log(res)
+        if (res.code == 200) {
+         
 
+        } else {
+          wx.showToast({
+            title: res.message,
+            icon: 'none',
+          })
+        }
+      })
   },
   initValidate() {
     let rules = {
@@ -108,7 +123,7 @@ Page({
       http.sendPostRequest("/actor/apply/save", { platformId: this.data.platformId, guildId: this.data.guildId, applyDescr: this.data.applyDescr })
         .then(res => {
           console.log(res)
-          if(res.code==200){
+          if (res.code == 200) {
             wx.showToast({
               title: '已提交，等待审核',
               icon: 'none',
@@ -118,8 +133,8 @@ Page({
                 url: '/pages/platform/platform'
               })
             }, 1000);
-            
-          }else{
+
+          } else {
             wx.showToast({
               title: res.message,
               icon: 'none',

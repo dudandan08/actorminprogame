@@ -1,0 +1,49 @@
+<view class="from">
+  <form >
+    <view class="item">
+      <view class="left">所属平台：</view>
+      <view class="select">
+        <picker bindchange="bindPickerChange" value="{{form.index}}" range-key="platformName" range="{{gangedData1}}">
+          <view class="picker {{form.seleNull &&gangedData1[form.index].platformName? '':'holder'}} ">
+            {{form.seleNull ? gangedData1[form.index].platformName:"请选择所属平台"}}
+          </view>
+        </picker>
+        <view class="icon">
+          <image src="/image/select.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="item" wx:if="{{form.seleNull==null}}">
+      <view class="left">所属企业：</view>
+      <view class="select">
+        <input class="input" value="{{orgName1}}" placeholder="请输入企业名称(必填)" bindinput="enterprise"></input>
+        <view class="lian {{flag==true ? 'lian1':''}}">
+          <view bindtap="chang" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{meetData}}" wx:key="unique">{{item.orgName}}</view>
+        </view>
+      </view>
+
+    </view>
+    <view class="item" wx:if="{{form.seleNull!=null}}">
+      <view class="left">所属企业：</view>
+      <view class="select">
+        <picker bindchange="bindPickerChange1" range-key="orgName" value="{{form.index1}}" range="{{meetData}}">
+          <view class="picker {{form.seleNull && meetData[form.index1] ? '':'holder'}}">
+            {{meetData[form.index1].orgName}}
+
+          </view>
+        </picker>
+        <view class="icon">
+          <image src="/image/select.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="explain">
+      <view class="left">申请说明：</view>
+      <textarea bindinput="shuo" value="{{applyDescr}}"></textarea>
+    </view>
+    <view class="btn">
+      <button  hover-class="none" bindtap="formSubmit">确 定</button>
+    </view>
+  </form>
+
+</view>

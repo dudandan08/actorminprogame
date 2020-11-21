@@ -108,9 +108,12 @@ Page({
          app.setLocalStorage("user",result.data);
          app.setLocalStorage("islogin",true);            
          app.setLocalStorage("token",result.data.tokenId);
-         wx.navigateBack({
-  
+         wx.switchTab({
+           url: '/pages/platform/platform',
          })
+        //  wx.navigateBack({
+  
+        //  })
         //  wx.switchTab({
         //       url: '/pages/index/index',
         //      })

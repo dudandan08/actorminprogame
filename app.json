@@ -9,6 +9,7 @@
     "pages/authentication/authentication",
     "pages/actorAmount/actoramount",
     "pages/actorApply/actorApply",
+    "pages/apply/apply",
     "pages/extract/extract",
     "pages/actorinfo/actorinfo",
     "pages/bill/bill",

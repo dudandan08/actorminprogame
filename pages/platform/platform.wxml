@@ -10,7 +10,7 @@
 				</view>
 				<view>艺人注册</view>
 			</view> -->
-			<view class="item" bindtap="goTo" data-url="/pages/actorApply/actorApply">
+			<view class="item" bindtap="goTo" data-url="/pages/apply/apply">
 				<view class="image">
 					<image src="../../image/item2.png"></image>
 				</view>

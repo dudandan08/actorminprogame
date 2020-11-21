@@ -92,9 +92,9 @@ Page({
       http.sendPostRequest('/actor/macth', {"userId":userid, fullName: e.detail.value.name, mobile: e.detail.value.tel }).then(res => {
         console.log(res)
         console.log(res.data.code)
-        if (res.data.code = 200) {
+        if (res.data.code ==200) {
           wx.showToast({
-            title: '验证成功',
+            title: res.data.message,
             icon: 'none',
           })
           setTimeout(function () {

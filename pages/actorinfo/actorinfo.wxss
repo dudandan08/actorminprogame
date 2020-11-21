@@ -1,15 +1,20 @@
 /* pages/actorAmount/actorinfo.wxss */
 .item{
   margin-left: 20rpx;
+  margin-right: 20rpx;
   margin-bottom: 20rpx;
 }
 .title {
+  padding: 0rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
   height: 80rpx;
   line-height: 80rpx;
-  width: 600rpx;
-  background-color: #f0f0f0;
+  background-color:  #DF5E29;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .table {

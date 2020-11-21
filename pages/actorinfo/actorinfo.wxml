@@ -1,24 +1,20 @@
 
 <view class="item" wx:for="{{actorsData}}" wx:key="index" wx:for-item="item">
   <view class="title">{{item.platformName}}</view>
-  <view class="table">
-    <view>所属公会：</view>
-    <view>{{item.guildName}}</view>
+  <view class="list_item">
+    <view class="item_left" >所属公会：</view>
+    <view class="item_right">{{item.guildName==null?'':item.guildName}}</view>
   </view>
-  <view class="table">
-    <view>直播ID：</view>
-    <view>{{item.livePlatformUserId}}</view>
+  <view class="list_item">
+    <view class="item_left">直播ID：</view>
+    <view class="item_right">{{item.livePlatformUserId==null?'':item.livePlatformUserId}}</view>
   </view>
-  <view class="table">
-    <view>姓名：</view>
-    <view>{{item.fullName}}</view>
+  <view class="list_item">
+    <view class="item_left">姓名：</view>
+    <view class="item_right">{{item.realFullName==null?'':item.realFullName}}</view>
   </view>
-  <view class="table">
-    <view>昵称：</view>
-    <view>{{item.nickName}}</view>
-  </view>
-  <view class="table">
-    <view>认证状态：</view>
-    <view>{{item.isActorCertification}}</view>
+  <view class="list_item">
+    <view class="item_left">认证状态：</view>
+    <view class="item_right">{{item.isActorCertification==null?'':item.isActorCertification}}</view>
   </view>
 </view>

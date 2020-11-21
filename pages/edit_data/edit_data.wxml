@@ -7,11 +7,16 @@
       <view class="top">
         <view class="upload" bindtap="choose">
           <input style="display:none" value="{{form.userPhoto}}" name="userPhoto"></input>
-          <image src="{{form.userPhoto}}"></image>
+          <image src="{{form.userPhoto=='/default_head.jpg'?'../../image/head.png':form.userPhoto}}"></image>
         </view>
-        <input class="name" value="{{form.nickName}}" placeholder="请输入用户名" placeholder-class="color" name="nickName"/>
+       
       </view>
       <view class="kong"></view>
+      <view class="list_item">
+        <view class="item_left">昵称</view>
+        <input style="display:none" value="{{form.userId}}" name="userId"></input>
+        <input class="right_input" value="{{form.nickName}}" placeholder="" placeholder-class="color" name="nickName"/>
+      </view>
       <view class="list_item">
         <view class="item_left">性别</view>
         <!-- <input class="right_input" value="女" wx:if="{{form.gender==1}}" />
@@ -39,7 +44,7 @@
       </view>
       <view class="list_item">
         <view class="item_left">QQ</view>
-        <input class="right_input" value="{{form.qq}}" placeholder="请输入qq账号"  name="qq"/>
+        <input class="right_input" value="{{form.qq}}" placeholder="请输入QQ号"  name="qq"/>
       </view>
       <view class="list_item">
         <view class="item_left">支付宝</view>

@@ -19,27 +19,38 @@
       </view>
     </view>
   </view>
-  <view class="kong"></view>
+  <view class="kong">
+  </view>
   <view class="other_info">
-    <view class="list_item" wx:if="{{form.gender}}">
+    <!-- wx:if="{{form.gender}}"-->
+    <view class="list_item">
       <view class="item_left">性别</view>
       <view class="item_right">{{form.gender==1?'女':'男'}}</view>
     </view>
-    <view class="list_item" wx:if="{{form.birthDate}}">
+    <!-- wx:if="{{form.birthDate}}"-->
+    <view class="list_item">
       <view class="item_left">出生日期</view>
-      <view class="item_right">{{form.birthDate}}</view>
+      <view class="item_right">{{form.birthDate==null?'':form.birthDate}}</view>
     </view>
-    <view class="list_item" wx:if="{{form.email}}">
+    <view class="list_item">
+      <view class="item_left">年龄</view>
+      <view class="item_right">{{form.age==null?'':form.age}}</view>
+    </view>
+    <view class="list_item">
       <view class="item_left">邮箱</view>
-      <view class="item_right">{{form.email}}</view>
+      <view class="item_right">{{form.email==null?'':form.email}}</view>
     </view>
-    <view class="list_item" wx:if="{{form.nickName}}">
+    <view class="list_item">
+      <view class="item_left">QQ</view>
+      <view class="item_right">{{form.qq==null?'':form.qq}}</view>
+    </view>
+    <view class="list_item" >
       <view class="item_left">支付宝</view>
-      <view class="item_right">{{form.nickName}}</view>
+      <view class="item_right">{{form.alipayAccount==null?'':form.alipayAccount}}</view>
     </view>
-    <view class="list_item" wx:if="{{form.currentAddress}}">
+    <view class="list_item">
       <view class="item_left">地址</view>
-      <view class="item_right">{{form.currentAddress}}</view>
+      <view class="item_right">{{form.currentAddress==null?'':form.currentAddress}}</view>
     </view>
   </view>
   <view class="btn" wx:if="{{token}}" bindtap="out">退出登录</view>

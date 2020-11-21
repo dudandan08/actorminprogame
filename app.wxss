@@ -58,7 +58,8 @@ image{
 
 
 .list_item {
-  padding: 0 40rpx;
+  margin-bottom: 1rpx;
+  padding: 1rpx 40rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;

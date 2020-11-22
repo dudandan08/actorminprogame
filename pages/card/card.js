@@ -22,7 +22,7 @@ Page({
       name: "",
       site: "",
       number: "",
-      bank: '',
+      bankType: '',
     },
     index: 0,
   },
@@ -30,27 +30,31 @@ Page({
   loadData() {
     wx.showLoading({
       title: '加载中...',
-    })
-    let url = "/bankinfo/1";//+app.globalData.user.userId;
+    });
+    let userid;
+      if(app.globalData.user==null){
+        userid=app.getLocalStorage("userId");
+      }else{
+        userid=app.globalData.user.userId;
+      }
+    let url = "/bankinfo/"+userid;
     console.log(url);
     http.sendGetRequest(url, null).then(result => {
-      console.log("艺人帐户 返回结果：" + JSON.stringify(result));
-      // console.log(resp)
-      // console.log(resp.data)
-      // let result = resp.data;
+      //console.log("艺人帐户 返回结果：" + JSON.stringify(result));
+     
       if (result.code == 200) {
         if (result.data != null) {
-          // this.setData({
-          //   "form.id": result.data.id
-          // })
-          // this.setData({
-          //   "form.index": result.data.bankType
-          // })
-          // this.setData({
-          //   "form.seleNull": result.data.bankType
-          // })
           this.setData({
-            "form.bank": result.data.bankType
+            "form.id": result.data.id
+          })
+          this.setData({
+            "form.index": result.data.bankType
+          })
+          this.setData({
+            "form.seleNull": result.data.bankType
+          })
+          this.setData({
+            "form.bankType": result.data.bankType
           })
           this.setData({
             "form.site": result.data.bankName
@@ -86,22 +90,25 @@ Page({
   },
   initValidate() {
     let rules = {
-      bank: {
+      bankType: {
         required: true,
       },
       site: {
         required: true,
+        rangelength:[1,50]
       },
       name: {
         required: true,
+        rangelength:[1,10]
       },
       number: {
         required: true,
+        rangelength:[10,50]
       }
     }
     let message = {
-      bank: {
-        required: '请输入银行名称'
+      bankType: {
+        required: '请选择银行卡'
       },
       site: {
         required: '请输入开户行',
@@ -119,12 +126,12 @@ Page({
   formSubmit(e) {
     console.log(e)
     let params = e.detail.value
-    console.log(params)
+    console.log("绑定银行卡提交参数："+JSON.stringify(params) )
     if (!this.WxValidate.checkForm(params)) {
       let error = this.WxValidate.errorList[0]
       console.log(error)
       switch (error.param) {
-        case "bank":
+        case "bankType":
           wx.showToast({
             title: error.msg,
             icon: "none"
@@ -150,7 +157,7 @@ Page({
           break
       }
     } else {
-      console.log("绑定银行卡")
+     
       let userid;
       if (app.globalData.user == null) {
         userid = app.getLocalStorage("userId");
@@ -158,10 +165,9 @@ Page({
         userid = app.globalData.user.userId;
       }
       let paramsData = {
-        // "id":params.id,
+        "id":params.id,
         "userId": userid,
-        // "bankType":params.index,
-        "bankType": params.bank,
+        "bankType":params.bankType,
         "bankName": params.site,
         "bankAmount": params.name,
         "cardNo": params.number
@@ -180,6 +186,7 @@ Page({
           });
           setTimeout(function () {
             wx.navigateBack({
+              url: '/pages/platform/platform'
             })
           }, 1000);
         } else {
@@ -193,6 +200,7 @@ Page({
   },
   // 选择银行
   bindPickerChange(e) {
+    console.log(e);
     this.setData({
       "form.seleNull": '0',
       "form.index": e.detail.value

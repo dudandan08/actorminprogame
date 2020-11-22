@@ -55,7 +55,8 @@ page {
 .right{
   font-weight: 28rpx;
   font-weight: bold;
-  color:#DF5E29 ;
+  color: green;
+  /* color:#DF5E29 ; */
 }
 .right1{
   color:#333 !important ;

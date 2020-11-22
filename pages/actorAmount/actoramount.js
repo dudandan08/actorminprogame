@@ -31,7 +31,7 @@ Page({
       let result = resp.data;
       if (resp.code == 200) {
         that.setData({
-          totalMoney:  result.alreadyAmount
+          totalMoney:  result.totalAmount
         });
         this.setData({
           withdrawMoney: result.alreadyAmount

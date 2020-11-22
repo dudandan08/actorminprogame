@@ -4,6 +4,7 @@ import {
   Http
 } from '../../utils/http'
 const http = new Http();
+const app = getApp();
 let jie = false
 Page({
 
@@ -90,8 +91,13 @@ Page({
       })
       return
     }
-    http.sendPostRequest("/actor/apply/save", { platformId: this.data.id, guildId: this.data.guildId, applyDescr: this.data.applyDescr })
-      .then(res => {
+    http.sendPostRequest("/actor/apply/save", 
+    { 
+      applyPlatformId: this.data.id, 
+      orgId: this.data.guildId, 
+      applyDescr: this.data.applyDescr 
+    }
+    ).then(res => {
         console.log(res)
         if (res.data.code == 200) {
           wx.showToast({

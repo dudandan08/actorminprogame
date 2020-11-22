@@ -73,7 +73,7 @@ Page({
     // console.log(params)
     if (!this.WxValidate.checkForm(params)) {
       let error = this.WxValidate.errorList[0]
-      // console.log(error)
+       console.log(error)
       switch (error.param) {
         case "number":
           wx.showToast({
@@ -83,7 +83,31 @@ Page({
           break;
       }
     } else {
-      console.log("提现接口")
+      http.sendPostRequest("/income/save", 
+      { 
+        income: params.number
+      }
+      ).then(res => {
+          console.log(res)
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '已提交，等待审核',
+              icon: 'none',
+            })
+            setTimeout(function () {
+              wx.switchTab({
+                url: '/pages/platform/platform'
+              })
+            }, 1000);
+  
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+            })
+          }
+        })
+  
     }
     return false
   },

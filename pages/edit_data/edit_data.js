@@ -218,6 +218,119 @@ this.getUserinfo()
       }
     })
   },
+  chooseImage(e) {
+    var _this = this;
+    var _self = e.currentTarget.dataset;
+    let type = e.currentTarget.dataset.type
+    wx.showActionSheet({
+        itemList: ["从相册选择", "拍照"],
+        itemColor: "#333",
+        success: function(ret) {
+            if (ret.tapIndex + 1 != 0) {
+                switch (ret.index) {
+                    case 1: //从相册选择
+                        var sourceType = ['album'];
+                        break;
+                    case 2: //拍照
+                        var sourceType = ['camera'];
+                        break;
+                }
+                wx.chooseImage({
+                    count: 9, // 最多可以选择的图片张数，默认9
+                    sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+                    sourceType: sourceType, // album 从相册选图，camera 使用相机，默认二者都有
+                    success: function(res) {
+                        // success
+                        //console.log(res)
+                        wx.showLoading({
+                            title: '图片获取中...',
+                        })
+                        _this.uploadImage(res.tempFilePaths[0], (res) => {
+                            wx.hideLoading();
+                            _this.setData({
+                              'form.userPhoto': res.tempFilePaths[0]
+                            });
+                        });
+                    },
+                    fail: function() {
+                        // fail
+                        console.log("fail");
+
+                    },
+                    complete: function() {
+                        // complete
+                        console.log("complete");
+                    }
+                })
+            }
+        },
+        fail: function(ret) {
+
+        }
+    })
+},
+//上图片上传到服务器
+uploadImage(filePath, callback) {
+    var _this = this;
+    var timer = setTimeout(() => {
+        // console.log(filePath);
+        wx.uploadFile({
+            //url: app.globalData.url + "api/upload",
+            url: baseUrl + "/upload",
+            header: {
+                'content-type': 'multipart/form-data',
+            },
+            filePath: filePath,
+            name: 'pic',
+            formData: {
+                image: filePath
+            },
+            success: function(ret) {
+                // console.log(JSON.stringify(ret));
+                wx.hideLoading();
+                if (ret.data.status == 1000) {
+                    wx.showToast({
+                        icon: 'none',
+                        duration: 3000,
+                        title: ret.data.msg,
+                    })
+                    return false;
+                } else if (ret.statusCode == 404) {
+                    wx.showToast({
+                        icon: 'none',
+                        duration: 3000,
+                        title: '数据请求地址未找到',
+                    })
+                } else {
+                    typeof ret.data != "object" ? ret.data = JSON.parse(ret.data) : '';
+                    if (ret) {
+                        if (typeof callback == "function" || typeof callback == "object") {
+                            var timer = setTimeout(() => {
+                                callback(ret.data);
+                                clearTimeout(timer);
+                            }, 300);
+                        }
+                    } else {
+                        wx.showToast({
+                            icon: 'none',
+                            duration: 3000,
+                            title: '图片获取失败,请重试',
+                        })
+                    }
+                }
+            },
+            fail: function(res) {
+                // console.log(res);
+                wx.hideLoading();
+                wx.showToast({
+                    icon: 'none',
+                    duration: 3000,
+                    title: '网络请求失败，请确保网络是否正常',
+                })
+            }
+        });
+    }, 10);
+},
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value,

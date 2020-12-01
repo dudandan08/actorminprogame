@@ -141,7 +141,12 @@ Page({
                     sourceType: sourceType, // album 从相册选图，camera 使用相机，默认二者都有
                     success: function(res) {
                         // success
-                        //console.log(res)
+                        console.log(res)
+                        let items=res.tempFiles[0];
+                        items.expand = items.path.replace(/.+\./, '');
+                        items.name = items.path.replace(/.+\//, '');
+                        items.url = items.path;
+                        console.log(items);
                         wx.showLoading({
                             title: '图片获取中...',
                         })
@@ -177,22 +182,24 @@ Page({
 },
 //上图片上传到服务器
 uploadImage(filePath, callback) {
+  console.log("filepath:"+filePath);
     var _this = this;
     var timer = setTimeout(() => {
         // console.log(filePath);
+        console.log("token:"+ wx.getStorageSync('token') || "")
         wx.uploadFile({
             //url: app.globalData.url + "api/upload",
-            url: baseUrl + "/upload",
+            //url: baseUrl + "/upload/file",
+            url:'http://62.234.27.2:8080/upload/file',
             header: {
                 'content-type': 'multipart/form-data',
+                token: wx.getStorageSync('token') || ""
             },
+            method: 'POST',
             filePath: filePath,
-            name: 'pic',
-            formData: {
-                image: filePath
-            },
+            name: 'file',
             success: function(ret) {
-                // console.log(JSON.stringify(ret));
+                 console.log(JSON.stringify(ret));
                 wx.hideLoading();
                 if (ret.data.status == 1000) {
                     wx.showToast({
@@ -226,7 +233,7 @@ uploadImage(filePath, callback) {
                 }
             },
             fail: function(res) {
-                // console.log(res);
+                 console.log(res);
                 wx.hideLoading();
                 wx.showToast({
                     icon: 'none',

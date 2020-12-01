@@ -24,8 +24,8 @@
     <view class="right1">
       <view class="flex img">
           <input class="hideinput" value="{{form.certificateImg1}}" name="certificateImg1"></input>
-          <view id="img"  data-type="front" class="img1" wx:if="{{!imgs}}" bindtap="choose">上传证件正面图片+</view>
-          <image wx:else mode="aspectFill"  data-type="front" src="{{imgs}}"  bindtap="choose"></image>
+          <view id="img"  data-type="front" class="img1" wx:if="{{!imgs}}" bindtap="chooseImage">上传证件正面图片+</view>
+          <image wx:else mode="aspectFill"  data-type="front" src="{{imgs}}"  bindtap="chooseImage"></image>
         </view>
     </view>
   </view>
@@ -33,8 +33,8 @@
     <view class="right1">
       <view class="flex img">
           <input class="hideinput" value="{{form.certificateImg2}}" name="certificateImg2"></input>
-          <view id="img1"  data-type="back" class="img1" wx:if="{{!imgs1}}" bindtap="choose">上传证件反面图片+</view>
-          <image wx:else mode="aspectFill" data-type="back" src="{{imgs1}}" bindtap="choose"></image>
+          <view id="img1"  data-type="back" class="img1" wx:if="{{!imgs1}}" bindtap="chooseImage">上传证件反面图片+</view>
+          <image wx:else mode="aspectFill" data-type="back" src="{{imgs1}}" bindtap="chooseImage"></image>
       </view>
     </view>
   </view>

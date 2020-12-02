@@ -210,8 +210,8 @@ Page({
               title: '上传成功',
             })
             _this.setData({
-              imgs:JSON.parse(ret.data).path,
-              "form.certificateImg1": "https://www.equyun.com"+JSON.parse(ret.data).path
+              imgs:"https://www.equyun.com/pic"+JSON.parse(ret.data).path,
+              "form.certificateImg1": "https://www.equyun.com/pic"+JSON.parse(ret.data).path
             });
             return
           }

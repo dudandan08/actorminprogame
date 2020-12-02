@@ -190,7 +190,7 @@ uploadImage(filePath, callback) {
         wx.uploadFile({
             //url: app.globalData.url + "api/upload",
             //url: baseUrl + "/upload/file",
-            url:'http://62.234.27.2:8080/upload/file',
+            url:'https://www.equyun.com/upload/file',
             header: {
                 'content-type': 'multipart/form-data',
                 token: wx.getStorageSync('token') || ""

@@ -99,24 +99,19 @@ Page({
           console.log(res)
           let result=res.data;
           if(result.code==200){
-            
-        app.globalData.user=result.data
-         app.globalData.isLogin=true;
-         app.globalData.token=result.data.tokenId
-         wx.setStorageSync('userId', result.data.userId)
-         wx.setStorageSync('token', result.data.tokenId)
-         app.setLocalStorage("user",result.data);
-         app.setLocalStorage("islogin",true);            
-         app.setLocalStorage("token",result.data.tokenId);
-         wx.switchTab({
-           url: '/pages/platform/platform',
-         })
-        //  wx.navigateBack({
-  
-        //  })
-        //  wx.switchTab({
-        //       url: '/pages/index/index',
-        //      })
+                
+            app.globalData.user=result.data
+            app.globalData.isLogin=true;
+            app.globalData.token=result.data.tokenId
+            wx.setStorageSync('userId', result.data.userId)
+            wx.setStorageSync('token', result.data.tokenId)
+            app.setLocalStorage("user",result.data);
+            app.setLocalStorage("islogin",true);            
+            app.setLocalStorage("token",result.data.tokenId);
+            wx.switchTab({
+              url: '/pages/platform/platform',
+            })
+        
           }else{
             wx.showToast({
               title:result.data.message,
@@ -124,29 +119,6 @@ Page({
             })
           }
         })
-      // app.login({username:params.name,password:params.password},regs=>{
-      //  console.log("login result : "+regs);
-      //  let result=regs.data;
-      //  console.log(result.data);     
-      //  if(result.code=200&&result.data!=null){
-      //   //  app.globalData.user=result.data
-      //   //  app.globalData.isLogin=true;
-      //   //  app.globalData.token=result.data.tokenId
-      //    wx.setStorageSync('userId', result.data.userId)
-      //    wx.setStorageSync('token', result.data.tokenId)
-      //   //  app.setLocalStorage("user",result.data);
-      //   //  app.setLocalStorage("islogin",true);            
-      //   //  app.setLocalStorage("token",result.data.tokenId);
-      //    wx.switchTab({
-      //     url: '/pages/index/index',
-      //    })
-      //  }else{
-      //   wx.showToast({
-      //     title: result.message,
-      //     icon: 'none',
-      //   })
-      //  }
-      // })
     }
   },
   register(){

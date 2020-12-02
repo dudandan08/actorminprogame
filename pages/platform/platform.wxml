@@ -44,7 +44,7 @@
 	</view>
 	<view style="height: 25rpx;"></view>
 	<view class="info info1">
-		<view class="header">艺人信息</view>
+		<view class="header">账户信息</view>
 		<view class="list flex">
 			<view class="item" bindtap="goTo" data-url="/pages/actorAmount/actoramount">
 				<view class="image">

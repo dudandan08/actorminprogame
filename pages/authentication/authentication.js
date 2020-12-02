@@ -18,6 +18,8 @@ const app = getApp();
 
 const http = new Http();
 
+const pathUrl='https://www.equyun.com';
+
 Page({
 
   /**
@@ -152,15 +154,16 @@ Page({
                         })
                         _this.uploadImage(res.tempFilePaths[0], (res) => {
                             wx.hideLoading();
+                            
                             if (_self.type == "front") {
                                 _this.setData({
-                                   imgs: res.tempFilePaths[0],
-                                  "form.certificateImg1":res.tempFilePaths[0]
+                                   imgs: pathUrl+res.path,
+                                  "form.certificateImg1":res.path
                                 });
                             } else {
                                 _this.setData({
-                                  imgs1: res.tempFilePaths[0],
-                                  "form.certificateImg2":res.tempFilePaths[0],
+                                  imgs1: pathUrl+res.path,
+                                  "form.certificateImg2":res.path,
                                 });
                             }
                         });

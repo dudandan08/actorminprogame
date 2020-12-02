@@ -114,7 +114,7 @@ Page({
         
           }else{
             wx.showToast({
-              title:result.data.message,
+              title:result.message,
               icon: 'none',
             })
           }

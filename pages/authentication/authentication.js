@@ -254,12 +254,12 @@ uploadImage(filePath, callback) {
   bindPickerChange(e) {
     this.setData({
       index: e.detail.value,
-      "form.certificateType":e.detail.value
+      "form.certificateType": e.detail.value
     })
   },
 
-   // 姓名
-   realName(e) {
+  // 姓名
+  realName(e) {
     this.setData({
       "form.name": e.detail.value
     })
@@ -271,10 +271,10 @@ uploadImage(filePath, callback) {
     })
   },
 
-/**
- * 提交表单
- * @param {*} e 
- */
+  /**
+   * 提交表单
+   * @param {*} e 
+   */
   formSubmit(e) {
     console.log(e)
     let params = e.detail.value
@@ -317,27 +317,27 @@ uploadImage(filePath, callback) {
     } else {
       console.log("注册接口 开始")
       let userid;
-      if(app.globalData.user==null){
-        userid=app.getLocalStorage("userId");
-      }else{
-        userid=app.globalData.user.userId;
+      if (app.globalData.user == null) {
+        userid = app.getLocalStorage("userId");
+      } else {
+        userid = app.globalData.user.userId;
       }
-      let paramsData={
-        "userId":userid,
-        "realFullName":params.realName,
-        "certificateType":params.certificateType,
-        "certificateNo":params.certificateNo,
-        "certificateImg1":params.certificateImg1,
-        "certificateImg2":params.certificateImg2
+      let paramsData = {
+        "userId": userid,
+        "realFullName": params.realName,
+        "certificateType": params.certificateType,
+        "certificateNo": params.certificateNo,
+        "certificateImg1": params.certificateImg1,
+        "certificateImg2": params.certificateImg2
       }
-      console.log("实名认证上传的参对象："+JSON.stringify(paramsData) );
-     // "certificateTime":util.formatTime(new Date())
+      console.log("实名认证上传的参对象：" + JSON.stringify(paramsData));
+      // "certificateTime":util.formatTime(new Date())
       //let url=baseUrl + api + "/userreal/save";
-      let url= "/userreal/save";
-      http.sendPostRequest(url,paramsData).then(resp=>{
-        console.log("实名认证 返回结果："+ JSON.stringify(resp) );
-        let result=resp;
-        if(result.code==200){
+      let url = "/userreal/save";
+      http.sendPostRequest(url, paramsData).then(resp => {
+        console.log("实名认证 返回结果：" + JSON.stringify(resp));
+        let result = resp;
+        if (result.code == 200) {
           wx.showToast({
             title: result.message,
             icon: 'success',
